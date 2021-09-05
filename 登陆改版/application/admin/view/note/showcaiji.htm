@@ -1,0 +1,163 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                     <li>
+                                        <a href="{:url('Note/addlistrules')}">采集管理</a>
+                    </li>
+                    <li class="active">节点列表</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = 'user/add.html'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="40%">节点名称</th>
+                                <th class="text-center">导出数据</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              <tr>
+                                <td align="center">{$note_name}</td>
+                                <td align="center">
+                                <select name="cate_id">
+                                    <option value="">请选择栏目</option>
+                                        {volist name="cateRes" id="cate"}
+                                            <option {if condition="$cate['model_id'] neq $modelId"} disabled="disabled" {/if} value="{$cate.id}"><?php echo str_repeat('-', $cate['level']*4)?>{$cate.cate_name}
+                                            </option>
+                                        {/volist}
+                                </select>
+                                <a href="javascript:;" id="export" onclick="exportdata()" class="btn btn-default">导出数据</a>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td colspan="2" align="center">
+                            <div id="loading-1" style="padding:10px; display:none;">
+                            <img src="__ADMIN__/images/loading-1.gif"><span>采集中...</span>
+                            </div>
+                            <div id="dg" style="padding:10px; display:none;">
+                            <img src="__ADMIN__/images/dg.png"><span>采集完成！</span></div>
+                            <div>
+                            <div id="export_data" style="padding:10px; display:none;">
+                            <img src="__ADMIN__/images/loading-1.gif"><span>导出数据中...</span>
+                            </div>
+                            <div id="export_done" style="padding:10px; display:none;">
+                            <img src="__ADMIN__/images/dg.png"><span>导出完成！</span></div>
+                            <div>
+                                <a id="cjbt" href="javascript:;" onclick="caiji()"   class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-bug"></i> 开始采集
+                                </a>
+                            </div>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+    //执行采集
+        function caiji(){
+            var id={$id};
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                data:{id:id},
+                url:"{:url('Note/doCaiji')}",
+                success:function(data){
+                    if(data==1){
+                        $("#cjbt").removeClass("disabled");
+                        $("#loading-1").hide();
+                        $("#dg").show();
+                    }
+                }
+            });
+            $("#loading-1").show();
+            $("#cjbt").addClass("disabled");
+            $("#dg").hide();
+        }
+    //导出数据
+    function exportdata(){
+        var cate_id=$("select[name=cate_id]").find("option:selected").val();
+        if(cate_id==0){
+            //alert('请选择栏目！');
+            layer.open({
+                time:2000,
+              content: '请选择栏目！',
+                  yes: function(index, layero){
+                    //do something
+                    layer.close(index); //如果设定了yes回调，需进行手工关闭
+                  }
+            });
+            return false;
+        }
+        var id={$id};
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                data:{id:id,cate_id:cate_id},
+                url:"{:url('Note/exportdata')}",
+                success:function(data){
+                    if(data==1){
+                       $("#export").removeClass("disabled");
+                        $("#export_data").hide();
+                        $("#export_done").show();
+                        $("#dg").hide();
+                    }
+                }
+            });
+            $("#dg").hide();
+            $("#export_data").show();
+            $("#export").addClass("disabled");
+            $("#cjbt").addClass("disabled");
+            $("#export_done").hide();
+    }
+
+    </script>
+
+
+</body></html>

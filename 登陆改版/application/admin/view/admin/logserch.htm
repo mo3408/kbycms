@@ -1,0 +1,120 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                                        <li class="active">用户管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <div class="col-sm-12"  style="margin:15px;">
+                        <div class="col-lg-3 col-sm-3 col-xs-3">
+                            <form class="form-horizontal" role="form" action="{:url('logserch')}" method="post">
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control" name="key" type="text">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">查询</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-2" style="float:right;">
+                        <a onClick="warning('确实要删除两周前的日志吗?', '{:url('dellstoperation')}')"  href="#" class="btn btn-darkorange shiny"><i class="fa fa-trash-o"></i>删除两周前的日志</a>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="6%">ID</th>
+                                <th class="text-center">用户名</th>
+                                <th class="text-center">用户组</th>
+                                <th class="text-center">操作内容</th>
+                                <th class="text-center">登录IP</th>
+                                <th class="text-center">时间</th>
+                                <th class="text-center" width="18%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="operationRes" id="admin"}
+                              <tr>
+                                <td align="center">{$admin.Id}</td>
+                                <td align="center">{$admin.user}</td>
+                                <td align="center">{$admin.title}</td>
+                                <td align="center">{$admin.action}</td>
+                                <td align="center">{$admin.logip}</td>
+                                <td align="center">
+                                    {$admin.logtime | date="Y-m-d H:i:s",###}
+                                </td>
+                                <td align="center">
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('deloperation',['id'=>$admin['Id']])}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+    function changeStatus(o){
+                    var id=$(o).attr('id');
+                    $.ajax({
+                        type:'POST',
+                        dataType:'json',
+                        data:{id:id},
+                        url:"{:url('Admin/changeStatus')}",
+                        success:function(data){
+                            //alert(data);
+                        }
+                    });
+                }
+    </script>
+
+
+</body></html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]><html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="zh-CN" class="ie9"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html lang="zh-CN"><!--<![endif]-->
+<head>
+    <title>快帮云CMS系统</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="__ADMIN__/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="__ADMIN__/images/icons/favicon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="__ADMIN__/images/icons/favicon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="__ADMIN__/images/icons/favicon-114x114.png">
+    <link type="text/css" rel="stylesheet" href="__ADMIN__/styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="__ADMIN__/css/base.css">
+    <link type="text/css" rel="stylesheet" href="__ADMIN__/css/style.css">
+</head>
+<body style="overflow:hidden;">
+<div class="loginbox">
+<form action="" method="post" id="login_form">
+    <div class="itemlogo"><img src="__ADMIN__/images/kblogo.png"></div>
+    <div class="itemdiv"><input type="text" name="uname" class="text form-control" placeholder="用户名" id="uname"></div>
+    <div class="itemdiv"><input type="password" name="password" class="text form-control" placeholder="密码" id="password"></div>
+    <div class="itemdiv"><input type="text" name="code" class="yztext form-control w50" placeholder="验证码" id="code" maxlength="4"><span class="yzcode" style="cursor:pointer;"><img style="width:110px"; border:0;padding:0;" src="{:captcha_src()}" onclick=this.src="{:captcha_src()}?id="+Math.random() id="code_img"></span></div>
+    <div class="itemdiv"><input type="submit" value="登 录" class="lbtn"></div>
+</form>        
+</div>
+<iframe src="loginbg3.html" width="100%" height="100%" scrolling="0" frameborder="0" id="login_bg"></iframe>
+<script src="__ADMIN__/script/jquery-1.10.2.min.js"></script>
+<script src="__ADMIN__/plus/layer/layer.js"></script>
+<script>
+(function(){
+    var sn=1+Math.random()*3;
+    $('#login_bg').attr('src','loginbg'+parseInt(sn)+'.html');
+})();   
+</script>
+ <!--[if lte IE 10 ]>
+<script>
+(function(){
+    $('#login_bg').hide();
+    $('body').css('background','url(canvas_js/4.jpg) no-repeat;')
+})();   
+</script>   
+<![endif]-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li class="active">文档管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+{if condition="$modelId neq 0"}
+<button type="button" tooltip="添加文档" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('content/add',['cate_id'=>$cateId,'model_id'=>$modelId])}'"> <i class="fa fa-plus"></i> Add
+</button>
+{/if}
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                        <div id="simpledatatable_filter" class="dataTables_filter">
+                        <form enctype="multipart/form-data" class="form-horizontal" role="form" action="" method="post"  >
+                            <label style="width:100%;">
+                                <input name="keys" type="search" class="form-control input-sm" aria-controls="simpledatatable" style="float:left; margin-right:10px; width:220px;">
+                                <button class="btn btn-blue shiny" style="width:60px; height:30px;">搜索</button>
+                            </label>
+                            </form>
+                        </div>
+
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="6%">ID</th>
+                                <th class="text-center">标题</th>
+                                <!--th class="text-center" width="20%">属性</th-->
+                                <th class="text-center" width="18%">所属栏目</th>
+                                <th class="text-center" width="10%">所属模型</th>
+                                <th class="text-center" width="18%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="artRes" id="art"}
+                             <tr>
+                                <td align="center">{$art.id}</td>
+                                <td >{$art.title}</td>
+                                <!--td align="center">
+                                <?php if($art['attr']):
+                                    $attrArr=explode(',',$art['attr']);
+                                ?>
+                                <?php foreach ($attrArr as $v): ?> 
+                                 <?php echo "<span class='label label-yellow'>".$v."</span>";?>
+                                 <?php endforeach;?>
+                                <?php else:?>
+                                    <span class="label label-orange">暂无属性</span>
+                                <?php endif;?>
+                                </td-->
+                                <td align="center">{$art.cate_name}</td>
+                                <td align="center">{$art.model_name}</td>
+                                <td align="center">
+                                    <a href="{:url('edit',array('art_id'=>$art['id'],'model_id'=>$art['model_id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('art_id'=>$art['id'],'model_id'=>$art['model_id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        {/volist}
+                                                    </tbody>
+                    </table>
+                    <div style="padding-top:10px; text-align:right;">{$artRes->render()}</div>
+                    <div style="padding-top:10px; text-align:left;"><a href="{:url('content/lst',array('cate_id'=>$cateId,'model_id'=>$modelId))}" class="btn btn-info shiny">返回</a></div>
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

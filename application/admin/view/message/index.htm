@@ -1,0 +1,143 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Cate/catelist')}">站点管理</a>
+                    </li>
+                                        <li>
+                        <a href="">栏目管理</a>
+                    </li>
+                                        <li class="active">查看留言</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">查看留言</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="6%">选择</th>
+                                <th class="text-center">姓名</th>
+                                <th class="text-center">电话</th>
+                                <th class="text-center">邮箱</th>
+                                <!-- <th class="text-center">公司</th> -->
+                                <th class="text-center">ip</th>
+                                <th class="text-center">留言内容</th>
+                                <th class="text-center">留言时间</th>
+                                <th class="text-center" width="10%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="list" id="art"}
+                            <tr>
+                                <td align="center"><label><input name="itm[]"  class="colored-blue" value="{$art.id}" type="checkbox"><span class="text"></span></label></td>
+                               
+                                <td align="center">{$art.name}</td>
+                                <td align="center">{$art.tel}</td>
+                                <td align="center">{$art.email}</td>
+                                <!-- <td align="center">{$art.title}</td> -->
+                                <td align="center">{$art.ip}</td>
+                                <td align="center">
+                                <a class="btn btn-success btn-sm shiny see" data="{$art.content}">
+                                        <i class="fa fa-search"></i> 查看
+                                </a>
+                                </td>
+                                <td align="center">{$art.add_time|date='Y-m-d H:i:s',###}</td>
+                               
+                                <td align="center">
+                                    <a href="#" onClick="msg_del('{:url('message/index',array('id'=>$art['id']))}')" data='222' class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        {/volist}
+                        <tr>
+                        <td colspan="9">
+                            <div class="col-lg-4">
+                            {$list->render()}
+                            </div>
+                        </td>
+                        
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script>
+    $('.see').click(function(){
+        var content = $(this).attr('data');
+        layer.open({
+          type: 1,
+          skin: 'layui-layer-rim', //加上边框
+          area: ['420px', '240px'], //宽高
+          content: content
+        });
+    })
+    function msg_del(url){
+
+        layer.confirm('您确定要删除吗？', {
+          btn: ['删除','取消'] //按钮
+        },
+        function(){
+            $.get(url,function(msg){
+                if(msg==1){
+                    // layer.msg('删除成功', {icon: 1});
+                   layer.msg('删除成功',{time:600,icon: 1},function(){
+                    window.location.reload();
+                    });
+                }else{
+                    layer.msg('删除失败', {icon: 2});
+                }
+            })
+          
+        });
+    }
+    </script>
+
+
+</body></html>

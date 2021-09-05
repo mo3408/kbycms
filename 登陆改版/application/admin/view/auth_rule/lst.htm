@@ -1,0 +1,127 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li class="active">规则管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加规则" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr pid="0">
+                            <th class="text-center" width="6%">伸缩</th>
+                                <th class="text-center"  width="6%">ID</th>
+                                <th >规则名称</th>
+                                <th class="text-center"  width="8%">是否启用</th>
+                                <th class="text-center"  width="8%">是否显示</th>
+                                <th class="text-center" width="18%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="ruleTree" id="rule"}
+                            <tr id="{$rule.id}" pid="{$rule.pid}">
+                            <td align="center"><span class="opens">+</span></td>
+                                <td align="center">{$rule.id}</td>
+                                <td ><?php echo str_repeat('-',$rule['level']*4)?>{$rule.title}</td>
+                                <td align="center">{if condition="$rule['status'] eq 1"}<span class="label label-palegreen">是</span>{else /}<span class="label label-orange">否</span>{/if}</td>
+                                <td align="center">{if condition="$rule['show'] eq 1"}
+                                <span class="label label-palegreen">是</span>
+                                {else /}<span class="label label-orange">否</span>{/if}</td>
+                                <td align="center">
+                                    <a href="{:url('edit',['id'=>$rule.id])}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('del',['id'=>$rule.id])}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        {/volist}                                
+                         </tbody>
+                    </table>
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+    //隐藏栏目
+    $('tr[pid!=0]').hide();
+    $('.opens').click(function(){
+        var id=$(this).parents('tr').attr('id');
+        if($(this).text()=='+'){
+            $(this).text('-');
+            $('tr[pid='+id+']').css('display','table-row');
+        }else{
+            $(this).text('+');
+             //$('tr[pid='+id+']').hide();
+              $.ajax({
+            type:"post",
+            dataType:"json",
+            data:{ruleid:id},
+            url:"{:url('AuthRule/ajaxlst')}",
+            success:function(data){
+                var sonids=[];
+                var idsobj=$('tr[pid!=0]');
+                idsobj.each(function(k,v){
+                    sonids.push($(this).attr('id'));
+                });
+                $.each(data,function(k,v){
+                    if($.inArray(v,sonids)){
+                        $('tr[id='+v+']').hide();
+                        $('tr[id='+v+']').find('span.first').text('+');
+                    }
+
+                });
+
+            }
+        });
+        }
+    });
+    </script>
+
+
+</body></html>

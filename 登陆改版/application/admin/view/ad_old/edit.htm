@@ -1,0 +1,215 @@
+   {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('ad/lst')}">广告管理</a>
+                    </li>
+                                        <li class="active">编辑广告</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                <script>
+                //  上传文件前置路径
+                    fileServiceRootUrl = '__INDEX__/uploads/ad/';
+                </script>              
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">编辑广告</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" id="subForm">
+                    <input type="hidden" name="id" value="{$ad.id}">
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告位</label>
+                                <div class="col-sm-6">
+                                   <select name="adpos_id">
+                                       <option value="">选择广告位</option>
+                                       {volist name="adposRes" id="adpos"}
+                                       <option {if condition="$adpos['id'] eq $ad['adpos_id']"} selected="selected" {/if} value="{$adpos.id}">{$adpos.name}</option>
+                                       {/volist}
+                                   </select>
+                                </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="ad_name" required="" type="text" value="{$ad.ad_name}">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">是否启用</label>
+                            <div class="col-sm-6">
+                                <div class="radio"  style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input name="on" {if condition="$ad['on'] eq 1"} checked="checked"  {/if} value="1" type="radio" class="colored-blue">
+                                        <span class="text">是</span>
+                                    </label>
+                                </div>
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                     <label>
+                                        <input  {if condition="$ad['on'] eq 0"} checked="checked"  {/if}  name="on" value="0" type="radio" class="colored-blue">
+                                        <span class="text">否</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告类型</label>
+                            <div class="col-sm-6">
+                            <div class="radio" style="float:left; padding-left:10px;">
+                                   {if condition="$ad['type'] eq 1"}
+                                    <span class="label label-orange">单图</span>
+                                   {else /}
+                                    <span class="label label-palegreen">轮播</span>
+                                   {/if}
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        {if condition="$ad['type'] eq 1"}    
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">链接地址</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="link"  type="text"  value="{$ad.link}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">图片</label>
+                            <div class="col-sm-6">
+                                <input  type="file" id="file_img" name="img_src">
+                                <input  type="hidden" id="imgUrl" value="{$ad['img_src']}">
+                            </div>
+                        </div>
+                        <script>initFileInput('file_img','imgUrl',1);</script>
+                        {/if}
+                        {if condition="$ad['type'] eq 2"} 
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input  type="file" id="file-1" name="fimg_src"> 
+                            </div>
+                        </div>
+                        <script> 
+                        initFileInputAll('file-1',{$data},{$id},"{:url('ad/uploadImg')}");
+                        </script> 
+                        {/if}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" class="btn btn-default" id="submitButton">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+
+                          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+    <script type="text/javascript">
+    $("#img").click(function(){
+            $(".img").show();
+            $(".lh").hide();
+        });
+    $("#lh").click(function(){
+            $(".img").hide();
+            $(".lh").show();
+        });
+   
+    // 修改链接
+    $('.link_save').bind('blur', function() {
+       var val = $(this).val();
+       var dataid = $(this).attr('dataid');
+       $.post('{:url("ad/upd")}',{id:dataid,link:val},function(msg){
+            if(msg===2){
+                layer.msg('修改链接失败');
+            }
+       })
+    });
+
+    function ajaxSort(){
+        var oldData = '';
+        $('.file-drag-handle').bind('mousedown', function(event) {
+            if(event.button===2){
+                return false;
+                }
+            var list =  $('.kv-preview-thumb');
+             oldData = [];
+            list.each(function(){
+               oldData.push(this.id);
+            })
+
+        });
+
+         
+    }
+$('#submitButton').click(function(){
+    var form  =document.getElementById('subForm'),
+    formdata =  new FormData(form);
+    var url = '{:url("ad/edit")}';
+    $.ajax({
+                     url:url,
+                     type:'post',
+                     data:formdata,
+                     dataType:'json',
+                     processData:false,
+                     contentType:false,
+                     success:function (res) {
+                        if(res.status=="1"){
+                            layer.msg(res.msg, {icon: 1}); 
+                            window.location.href='{:url("ad/lst")}';
+                            return false;
+                        }else{
+                            layer.msg(res.msg, {icon: 2}); 
+                            return false;
+                        }
+                     },
+                     error:function () {
+                        layer.msg('修改错误！', {icon: 2}); 
+                     }
+                 })
+})
+
+    </script>
+
+</body></html>

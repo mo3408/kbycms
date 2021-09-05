@@ -1,0 +1,26 @@
+            <div class="page-sidebar" id="sidebar">
+                <!-- Page Sidebar Header-->
+                <div class="sidebar-header-wrapper">
+                    <!--input class="searchinput" type="text"-->
+                    <!--i class="searchicon fa fa-search"></i-->
+                    <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+                </div>
+                <!-- /Page Sidebar Header -->
+                <!-- Sidebar Menu -->
+                <ul class="nav sidebar-menu">
+                    
+                    {foreach name="cateRes" item="vo"}
+                    <li {if condition="$vo['id'] eq $cate_id"}class="active" {/if}>
+                        {if condition="$vo['level'] eq -1"}
+                        <a href="{:url('Content/lsts',(['cate_id'=>$vo['id'],'model_id'=>$vo['model_id']]))}" class="menu-dropdown">
+                        {else}
+                        <a href="{:url('Cate/cateList',(['cid'=>$vo['id']]))}" class="menu-dropdown">
+                        {/if}
+                        <i class="menu-icon fa  {$vo.icon}"></i>
+                        <span class="menu-text">{$vo.cate_name}</span>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+                <!-- /Sidebar Menu -->
+            </div>

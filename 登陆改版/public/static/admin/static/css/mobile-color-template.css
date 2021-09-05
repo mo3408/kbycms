@@ -1,0 +1,100 @@
+#header{background:@mainColor;}
+.swiper-pagination-bullet-active{
+    background: @mainColor;
+}
+.house-show-box .intro-text .price-num{color:@mainColor;}
+#select_head .item.active .tit {
+    color: @mainColor;
+}
+#select_body .more .active {
+    color: @mainColor
+}
+#select_body .more .active:after {
+    border-color: @mainColor;
+}
+.price-form .smt {
+    background: @mainColor;
+    color: @textColor;
+}
+.select-status em.active{border-color:@mainColor;}
+.mapshow-per-pos .hb .active{
+    color:@mainColor;
+}
+.nav-act .call-tel{
+    background:@mainColor;
+}
+.month-avg-price{background: @mainColor;}
+.up-down .price{
+    color:@mainColor;
+}
+.bt-box .btn{background: @mainColor;}
+.lease-way .choose-way em.active{
+    background: @mainColor;
+    color:@textColor;
+}
+.re-rentals .configure .active{
+    color:@textColor;
+    background:@mainColor;
+}
+.question-lists .ask:before{background: @mainColor;}
+.question-detail .ask .tit:before{
+    background: @mainColor;
+}
+.time-pumping li.active:before{border-color: @mainColor;}
+.time-signupNum .count-back{background: @mainColor;}
+.telSignup .tel {
+    color: @mainColor;
+    border-color: @mainColor;
+}
+.telSignup .signup{background:@mainColor;  color:@textColor;}
+.agent-survey{background:@mainColor;color:@textColor;}
+.agent-list .comment-content .tel_phone:after{border-color: @mainColor;}
+.news .tab_hd a.on{
+    color: @mainColor;
+}
+.i-name-price .itemPrice em {
+    color: @mainColor;
+}
+.i-name-price .itemPrice em {
+    color: @mainColor;
+}
+.make-deal-record .tab-hd a.on{
+    color: @mainColor;
+}
+.Building-type a.active {
+    color: @mainColor;
+    border-color: @mainColor;
+}
+.house-type .tab_hd a.on,
+.house-type .tab_hd a:active{
+    color: @mainColor;
+}
+.nearby-position .tab_link a.on p,
+.nearby-position .tab_link a:active p{
+    color: @mainColor;
+}
+.floorInfo-box em{
+    color:@mainColor;
+}
+.headlines .tit{ color:@mainColor;}
+.apartment-layout-box .price em{
+    color:@mainColor;
+}
+#select_body .more .submit_area .submit {
+    color: @textColor;
+    background: @mainColor;
+}
+.price-house-area em {
+    color: @mainColor;
+}
+.lookRoom-head .lr-tab .active {
+    color: @mainColor;
+    border-bottom-color: @mainColor;
+}
+#search-lists{border-color: @mainColor;}
+.footer-bar li.active a{color:@mainColor;}
+.text20{color:@mainColor;}
+.group-call a{color:@textColor;background-color: @mainColor;}
+.group-phone h2 a{color:@mainColor;}
+.list-discount span{background-color: @mainColor;color:@textColor;}
+

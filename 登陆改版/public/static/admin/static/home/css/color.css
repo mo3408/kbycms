@@ -1,0 +1,198 @@
+.topBar { background: #00AC00;}
+.topBar .sele_city .city_list a:hover {  color: #00AC00;  }
+.topBar .log_link .loged .slide_tog a:hover {  color: #00AC00; }
+.topBar .log_link .loged .user_info .name {
+    color: #FFFFFF;
+}
+.navBar {  background: #00AC00; }
+.navBar .nav_list li.active{background-color: #00AC00;}
+.navBar .nav_list a { color: #FFFFFF;}
+.sear_box {border-color:#00AC00;}
+.sear_box .btn_area .sbm_btn {background: #00AC00;color:#FFFFFF;}
+.page_list a.on,.page_list li span,
+.page_list a:hover {background: #00AC00;color: #FFFFFF;}
+#search-box{border-color:#00AC00;}
+#search-box li em{color:#00AC00;}
+.map_house .sele_sear .sear .btn_area {background: #00AC00;}
+.map_house .sele_sear .sear .btn_area .btn:after {border-color:#00AC00;}
+.map_house .sele_sear .sele_list .btn {background: #00AC00;color:#FFFFFF;}
+.map_house .main .r_box .house_list .hd .sale_type li .in_sale {  color: #00AC00;  }
+.seleBar a.active,
+.seleBar a:hover {  color: #00AC00;  }
+.seleBar .btn {border-color:#00AC00;background: #00AC00;}
+.houseList_wrap .head {border-bottom-color:#00AC00;}
+.houseList_wrap .head h2 a.active,
+.houseList_wrap .head h2 a:hover {background: #00AC00;}
+.houseList_wrap .head .tab a.active,
+.houseList_wrap .head .tab a:hover {
+    color: #00AC00;
+}
+.houseList_wrap .list_con .price { color: #00AC00;}
+.houseList_wrap .list_con .price strong { color: #00AC00;}
+.houseList_wrap .agent_list .r_con p b {
+    color: #00AC00;
+}
+.houseList_wrap .agent_list .label_list .item {border-color:#00AC00;color: #00AC00;}
+.houseList_wrap .agent_list .phone {color: #00AC00;}
+.broker-tags i{border-color:#00AC00;color:#00AC00;}
+.newhouse .tab_nav li a.active,
+.newhouse .tab_nav li a:hover {
+    color: #00AC00;
+}
+.house_detail .main_info .hd_box .collect_btn.on {background: #00AC00;border-color: #00AC00;color: #FFFFFF;}
+.house_detail .main_info .con_box .rightArea .price strong {
+    color: #00AC00;
+}
+.house_detail .main_info .con_box .rightArea .agent_info .c_con .phone {color: #00AC00;}
+.house_detail .scroll_nav {background: #FFFFFF;border-color:#00AC00;}
+.house_detail .scroll_nav li.active a,
+.house_detail .scroll_nav li a:hover {
+    background: #00AC00;
+    color: #FFFFFF;
+}
+.house_detail .con_wrap .title .tab_hd li a.on {
+    color: #00AC00;
+}
+.house_detail .con_wrap .title a:hover {
+    color: #00AC00 !important;
+}
+.house_detail .con_wrap .near_support .r_box .nav {border-color:#00AC00;}
+.house_detail .con_wrap .near_support .r_box .nav a.active,
+.house_detail .con_wrap .near_support .r_box .nav a:hover {
+    background: #00AC00;
+    color: #FFFFFF;
+}
+.house_detail .con_wrap .similar_house .list .ft_con p strong {
+    color: #00AC00;
+}
+.house_detail .con_wrap .similar_house .list .ft_con .price {
+    color: #00AC00;
+}
+.house_detail .buildNum_info .r_con .tab_nav a.active,
+.house_detail .buildNum_info .r_con .tab_nav a:hover {
+    color: #00AC00;
+    border-color: #00AC00;
+}
+.newhouse_detail .head .collect_btn.on {
+    background: #00AC00;
+    color: #FFFFFF;
+    border-color: #00AC00;
+}
+.newhouse_detail .tab_nav li a.active,
+.newhouse_detail .tab_nav li a:hover {
+    color: #00AC00;
+}
+.sub_nav {border-color:#00AC00;}
+.sub_nav a.active,
+.sub_nav a:hover {
+    color: #00AC00;
+    border-color: #00AC00;
+}
+.sub_nav a.active{
+    background-color: #00AC00;
+    color:#FFFFFF;
+}
+.artc_detail .relative_artc .title .b_l {background: #00AC00;}
+.dynamic_list li .l_con .time {background: #00AC00;color: #FFFFFF;}
+.dynamic_list li .l_con .c_l .c {background: #00AC00;}
+.dynamic_list li .r_con a { color: #00AC00;}
+.houseType_wrap .list_box li .con p span{ color:#00AC00;}
+.houseType_detail .tab_scroll .scroll_wrap li a.active,
+.houseType_detail .tab_scroll .scroll_wrap li a:hover {
+    border-color: #00AC00;
+}
+.houseType_detail .tab_scroll .scroll_wrap li a.active p,
+.houseType_detail .tab_scroll .scroll_wrap li a:hover p {
+    color: #00AC00;
+}
+.houseType_detail .info_box .info_list li span strong {
+    color: #00AC00;
+}
+.question .title a {background: #00AC00;}
+.question .title .ipt_box .btn {background: #00AC00;color: #FFFFFF;}
+.agent_info .btn_row a:hover {
+    color: #00AC00;
+    border-color: #00AC00;
+}
+.agent_info .phone {color: #00AC00;}
+.agent_info .label_list .item {border-color:#00AC00;color:#00AC00;}
+.cm_rightArea .title .b_l {background: #00AC00;}
+.cm_rightArea .rcmd_house .row .price {
+    color: #00AC00;
+}
+.cm_rightArea .rcmd_build .r_con b {
+    color: #00AC00;
+}
+.cm_rightArea .hot_build .list .con p b {
+    color: #00AC00;
+}
+.comment-head .comment-tags i.on{border-color: #00AC00;color:#00AC00;}
+.send-btn{background-color: #00AC00;color:#FFFFFF;}
+.phone-text{color:#00AC00;}
+.header .sele_city .city_list a:hover {
+    color: #00AC00;
+}
+.label_menu h3 { color: #00AC00;}
+.label_menu .l { background: #00AC00;}
+.label_menu .link a:hover {
+    color: #00AC00;
+}
+.build_list li .ft .price {
+    color: #00AC00;
+}
+.house_news .list h4 {color: #00AC00;}
+.house_news .list h4 a{color:#00AC00;}
+.build_shoppers .l_box .appoint .form_box .btn_area .sbm {
+    background: #00AC00;
+}
+.sed_house .top_director .list .mark b {
+    color: #00AC00;
+}
+.sed_house .top_director .ft_link a {background: #00AC00;  color: #FFFFFF;}
+.order_modl .list li .price b,
+.order_modl .list li .price_float {
+    color: #00AC00;
+}
+.slide .switchable-nav ol li.active{background-color: #00AC00;}
+.btn_area .sbm{background: #00AC00;  color: #FFFFFF;}
+.person_center .main .menu_list a.active,
+.person_center .main .menu_list a:hover {
+    background: #00AC00;
+    color: #FFFFFF;
+}
+.person_center .main .rightArea .title h2 a.on,
+.person_center .main .rightArea .title h2 a:hover {
+    border-color: #00AC00;
+}
+.person_center .main .base_info .form_box .check_code .get_code,
+.person_center .main .add_house .form_box .check_code .get_code {
+    background: #00AC00;
+    color: #FFFFFF;
+}
+.J_delete{background-color: #00AC00;color:#FFFFFF;}
+.options a.J_delete{border-color: #00AC00;color:#00AC00;background-color: #FFFFFF;}
+.layui-btn-danger{background-color: #00AC00;}
+.layui-form-radio i:hover, .layui-form-radioed i{color:#00AC00;}
+.layui-form-select dl dd.layui-this{background-color: #00AC00;}
+.layui-form-checked[lay-skin="primary"] i{border-color:#00AC00;background-color:#00AC00;}
+.cm_rightArea .sale_btn {border-color:#00AC00;  color: #00AC00;}
+.map_house .main .r_box .house_list .bd li .r_con .price { color: #00AC00;}
+.question .question-pannel a.active{background-color: #00AC00;color:#FFFFFF;}
+.question .question-pannel a:hover{background-color: #00AC00;color:#FFFFFF;}
+.question-lists a.question-house-title{color:#00AC00;}
+.question-right-title span{border-bottom-color:#00AC00;}
+.question-right-lists li a:hover{color:#00AC00;}
+.question-right-lists li dd span{color:#00AC00;}
+.submit-btn{background-color: #00AC00;  color: #FFFFFF;}
+.group_body_r01{background:#00AC00;}
+.group_body_r03{border-top-color: #00AC00;}
+.sele_city .city_list .hot a{  color:#00AC00;  }
+.sele_city .city_list a:hover {  color: #00AC00;  }
+.layui-form-checkbox[lay-skin="primary"]:hover i{border-color:#00AC00;}
+.scroll-top span.text{background-color: #00AC00;color:#FFFFFF;}
+.news-center a:hover{color:#00AC00;}
+.index .search-type a.active{background-color: #00AC00;}
+.index .search-input .search-btn{background-color: #00AC00;color:#FFFFFF;}
+.search-tab a.active{background-color: #00AC00;color:#FFFFFF;}
+.search-tab a.active:after{color:#00AC00;}
+

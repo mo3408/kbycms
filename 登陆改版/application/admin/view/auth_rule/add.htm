@@ -1,0 +1,153 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="#">规则管理</a>
+                    </li>
+                                        <li class="active">添加规则</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增规则</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post">
+
+                    <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">上级规则</label>
+                            <div class="col-sm-6">
+                                <select name="pid" style="width: 100%;">
+                                    <option selected="selected" value="0">项级规则</option>
+                                    {volist name="ruleRes" id="rule"}
+                                    <option  value="{$rule.id}"><?php echo str_repeat('-',$rule['level']*4)?>{$rule.title}</option>
+                                    {/volist}
+                                </select>
+                            </div>
+                        </div>  
+
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">规则名</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="title" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">规则</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="name" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">图标</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="icon"  type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">是否启用</label>
+                            <div class="col-sm-6">
+                            <!-- 单选 -->
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input checked="checked" name="status" value="1" type="radio">
+                                        <span class="text">是</span>
+                                    </label>
+                                </div>
+
+                            <!-- 单选 -->
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input name="status" value="0" type="radio">
+                                        <span class="text">否</span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label no-padding-right">是否显示</label>
+                            <div class="col-sm-6">
+                            <!-- 单选 -->
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input checked="checked" name="show" value="1" type="radio">
+                                        <span class="text">是</span>
+                                    </label>
+                                </div>
+
+                            <!-- 单选 -->
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input name="show" value="0" type="radio">
+                                        <span class="text">否</span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

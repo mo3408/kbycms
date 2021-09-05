@@ -1,0 +1,100 @@
+#header{background:#00AC00;}
+.swiper-pagination-bullet-active{
+    background: #00AC00;
+}
+.house-show-box .intro-text .price-num{color:#00AC00;}
+#select_head .item.active .tit {
+    color: #00AC00;
+}
+#select_body .more .active {
+    color: #00AC00
+}
+#select_body .more .active:after {
+    border-color: #00AC00;
+}
+.price-form .smt {
+    background: #00AC00;
+    color: #FFFFFF;
+}
+.select-status em.active{border-color:#00AC00;}
+.mapshow-per-pos .hb .active{
+    color:#00AC00;
+}
+.nav-act .call-tel{
+    background:#00AC00;
+}
+.month-avg-price{background: #00AC00;}
+.up-down .price{
+    color:#00AC00;
+}
+.bt-box .btn{background: #00AC00;}
+.lease-way .choose-way em.active{
+    background: #00AC00;
+    color:#FFFFFF;
+}
+.re-rentals .configure .active{
+    color:#FFFFFF;
+    background:#00AC00;
+}
+.question-lists .ask:before{background: #00AC00;}
+.question-detail .ask .tit:before{
+    background: #00AC00;
+}
+.time-pumping li.active:before{border-color: #00AC00;}
+.time-signupNum .count-back{background: #00AC00;}
+.telSignup .tel {
+    color: #00AC00;
+    border-color: #00AC00;
+}
+.telSignup .signup{background:#00AC00;  color:#FFFFFF;}
+.agent-survey{background:#00AC00;color:#FFFFFF;}
+.agent-list .comment-content .tel_phone:after{border-color: #00AC00;}
+.news .tab_hd a.on{
+    color: #00AC00;
+}
+.i-name-price .itemPrice em {
+    color: #00AC00;
+}
+.i-name-price .itemPrice em {
+    color: #00AC00;
+}
+.make-deal-record .tab-hd a.on{
+    color: #00AC00;
+}
+.Building-type a.active {
+    color: #00AC00;
+    border-color: #00AC00;
+}
+.house-type .tab_hd a.on,
+.house-type .tab_hd a:active{
+    color: #00AC00;
+}
+.nearby-position .tab_link a.on p,
+.nearby-position .tab_link a:active p{
+    color: #00AC00;
+}
+.floorInfo-box em{
+    color:#00AC00;
+}
+.headlines .tit{ color:#00AC00;}
+.apartment-layout-box .price em{
+    color:#00AC00;
+}
+#select_body .more .submit_area .submit {
+    color: #FFFFFF;
+    background: #00AC00;
+}
+.price-house-area em {
+    color: #00AC00;
+}
+.lookRoom-head .lr-tab .active {
+    color: #00AC00;
+    border-bottom-color: #00AC00;
+}
+#search-lists{border-color: #00AC00;}
+.footer-bar li.active a{color:#00AC00;}
+.text20{color:#00AC00;}
+.group-call a{color:#FFFFFF;background-color: #00AC00;}
+.group-phone h2 a{color:#00AC00;}
+.list-discount span{background-color: #00AC00;color:#FFFFFF;}
+

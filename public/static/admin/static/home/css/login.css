@@ -1,0 +1,196 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+.login .header {
+  height: 100px;
+  line-height: 100px;
+  background: url(../images/icon/icon10.jpg) left bottom repeat-x;
+}
+.login .header .logo {
+  vertical-align: middle;
+}
+.login .main {
+  /*height: 874px;*/
+  position: absolute;
+  top: 100px;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+  background: #ffffff url(../images/bg1.png) center top no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.login .main .m_con {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: 300px;
+  padding: 0 40px;
+  padding-top: 10px;
+  height: 430px;
+  margin-top: -220px;
+  margin-right: -600px;
+  -webkit-box-shadow: 0 0 10px #aaa;
+  box-shadow: 0 0 10px #aaa;
+  background: #fff;
+}
+.login .main .m_con h1 {
+  font-size: 20px;
+  color: #000;
+  font-weight: normal;
+  line-height: 40px;
+}
+.login .main .m_con h1 span{float:right;font-size:14px;color:#999;}
+.login .main .m_con .oth_log {
+  display: block;
+  width: 145px;
+  height: 54px;
+  background: url(../images/icon/icon11.png) no-repeat;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  line-height: 40px;
+  position: absolute;
+  top: 22px;
+  right: -22px;
+}
+.login .main .m_con .form_box .sct {
+  margin-top: 16px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+.login .main .m_con .form_box .sct_ipt {
+  width: 300px;
+}
+.login .main .m_con .form_box .sct_ipt .ipt {
+  width: 280px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+}
+.login .main .m_con .form_box .check_code .get_code {
+  display: block;
+  width: 110px;
+  text-align: center;
+  line-height: 36px;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+}
+.login .main .m_con .form_box .check_code .sct_ipt {
+  width: 190px;
+  position: relative;
+}
+.login .main .m_con .form_box .check_code .sct_ipt:after {
+  display: block;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: #e0e0e0;
+}
+.login .main .m_con .form_box .check_code .ipt {
+  width: 170px;
+}
+.login .main .m_con .form_box .str_check_code {
+  background: none;
+}
+.login .main .m_con .form_box .str_check_code .get_code {
+  display: block;
+  width: 88px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.login .main .m_con .form_box .str_check_code .sct_ipt {
+  width: 200px;
+}
+.login .main .m_con .form_box .str_check_code .ipt {
+  width: 180px;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+.login .main .m_con .form_box .chkb_sct {
+  line-height: 40px;
+}
+.login .main .m_con .form_box .chkb_sct .chk {
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+.login .main .m_con .form_box .btn_area {
+  width: 100%;
+}
+.login .main .m_con .form_box .link {
+  line-height: 32px;
+  text-align: right;
+}
+.login .main .m_con .form_box .link a {
+  color: #313131;
+}
+.login .main .m_con .form_box .link span {
+  color: #aaa;
+}
+.login .main .third_log .hd {
+  height: 30px;
+  position: relative;
+}
+.login .main .third_log .hd h3 {
+  font-size: 15px;
+  font-weight: normal;
+  color: #999;
+  text-align: center;
+  line-height: 30px;
+}
+.login .main .third_log .hd .l {
+  width: 88px;
+  height: 1px;
+  background: #aaa;
+  position: absolute;
+  top: 50%;
+}
+.login .main .third_log .hd .l_l {
+  left: 0;
+}
+.login .main .third_log .hd .r_l {
+  right: 0;
+}
+.login .main .third_log .m {
+  margin-top: 10px;
+}
+.login .main .third_log .m a {
+  display: block;
+  float: left;
+  width: 66px;
+  height: 36px;
+  line-height: 36px;
+  padding-left: 34px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  color: #333;
+}
+.login .main .third_log .m .wx_log {
+  background-image: url(../images/icon/icon12.png);
+}
+.login .main .third_log .m .qq_log {
+  background-image: url(../images/icon/icon13.png);
+}
+.login .main .third_log .m .wb_log {
+  background-image: url(../images/icon/icon14.png);
+}
+.login .footer {
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.login .footer p {
+  color: #666;
+  text-align: center;
+  line-height: 60px;
+}

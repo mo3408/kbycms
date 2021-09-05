@@ -1,0 +1,198 @@
+.topBar { background: @mainColor;}
+.topBar .sele_city .city_list a:hover {  color: @mainColor;  }
+.topBar .log_link .loged .slide_tog a:hover {  color: @mainColor; }
+.topBar .log_link .loged .user_info .name {
+    color: @textColor;
+}
+.navBar {  background: @mainColor; }
+.navBar .nav_list li.active{background-color: @selectedColor;}
+.navBar .nav_list a { color: @textColor;}
+.sear_box {border-color:@mainColor;}
+.sear_box .btn_area .sbm_btn {background: @mainColor;color:@textColor;}
+.page_list a.on,.page_list li span,
+.page_list a:hover {background: @mainColor;color: @textColor;}
+#search-box{border-color:@mainColor;}
+#search-box li em{color:@mainColor;}
+.map_house .sele_sear .sear .btn_area {background: @mainColor;}
+.map_house .sele_sear .sear .btn_area .btn:after {border-color:@mainColor;}
+.map_house .sele_sear .sele_list .btn {background: @mainColor;color:@textColor;}
+.map_house .main .r_box .house_list .hd .sale_type li .in_sale {  color: @mainColor;  }
+.seleBar a.active,
+.seleBar a:hover {  color: @mainColor;  }
+.seleBar .btn {border-color:@mainColor;background: @mainColor;}
+.houseList_wrap .head {border-bottom-color:@mainColor;}
+.houseList_wrap .head h2 a.active,
+.houseList_wrap .head h2 a:hover {background: @mainColor;}
+.houseList_wrap .head .tab a.active,
+.houseList_wrap .head .tab a:hover {
+    color: @mainColor;
+}
+.houseList_wrap .list_con .price { color: @mainColor;}
+.houseList_wrap .list_con .price strong { color: @mainColor;}
+.houseList_wrap .agent_list .r_con p b {
+    color: @mainColor;
+}
+.houseList_wrap .agent_list .label_list .item {border-color:@mainColor;color: @mainColor;}
+.houseList_wrap .agent_list .phone {color: @mainColor;}
+.broker-tags i{border-color:@mainColor;color:@mainColor;}
+.newhouse .tab_nav li a.active,
+.newhouse .tab_nav li a:hover {
+    color: @mainColor;
+}
+.house_detail .main_info .hd_box .collect_btn.on {background: @mainColor;border-color: @mainColor;color: @textColor;}
+.house_detail .main_info .con_box .rightArea .price strong {
+    color: @mainColor;
+}
+.house_detail .main_info .con_box .rightArea .agent_info .c_con .phone {color: @mainColor;}
+.house_detail .scroll_nav {background: @textColor;border-color:@mainColor;}
+.house_detail .scroll_nav li.active a,
+.house_detail .scroll_nav li a:hover {
+    background: @mainColor;
+    color: @textColor;
+}
+.house_detail .con_wrap .title .tab_hd li a.on {
+    color: @mainColor;
+}
+.house_detail .con_wrap .title a:hover {
+    color: @mainColor !important;
+}
+.house_detail .con_wrap .near_support .r_box .nav {border-color:@mainColor;}
+.house_detail .con_wrap .near_support .r_box .nav a.active,
+.house_detail .con_wrap .near_support .r_box .nav a:hover {
+    background: @mainColor;
+    color: @textColor;
+}
+.house_detail .con_wrap .similar_house .list .ft_con p strong {
+    color: @mainColor;
+}
+.house_detail .con_wrap .similar_house .list .ft_con .price {
+    color: @mainColor;
+}
+.house_detail .buildNum_info .r_con .tab_nav a.active,
+.house_detail .buildNum_info .r_con .tab_nav a:hover {
+    color: @mainColor;
+    border-color: @mainColor;
+}
+.newhouse_detail .head .collect_btn.on {
+    background: @mainColor;
+    color: @textColor;
+    border-color: @mainColor;
+}
+.newhouse_detail .tab_nav li a.active,
+.newhouse_detail .tab_nav li a:hover {
+    color: @mainColor;
+}
+.sub_nav {border-color:@mainColor;}
+.sub_nav a.active,
+.sub_nav a:hover {
+    color: @mainColor;
+    border-color: @mainColor;
+}
+.sub_nav a.active{
+    background-color: @mainColor;
+    color:@textColor;
+}
+.artc_detail .relative_artc .title .b_l {background: @mainColor;}
+.dynamic_list li .l_con .time {background: @mainColor;color: @textColor;}
+.dynamic_list li .l_con .c_l .c {background: @mainColor;}
+.dynamic_list li .r_con a { color: @mainColor;}
+.houseType_wrap .list_box li .con p span{ color:@mainColor;}
+.houseType_detail .tab_scroll .scroll_wrap li a.active,
+.houseType_detail .tab_scroll .scroll_wrap li a:hover {
+    border-color: @mainColor;
+}
+.houseType_detail .tab_scroll .scroll_wrap li a.active p,
+.houseType_detail .tab_scroll .scroll_wrap li a:hover p {
+    color: @mainColor;
+}
+.houseType_detail .info_box .info_list li span strong {
+    color: @mainColor;
+}
+.question .title a {background: @mainColor;}
+.question .title .ipt_box .btn {background: @mainColor;color: @textColor;}
+.agent_info .btn_row a:hover {
+    color: @mainColor;
+    border-color: @mainColor;
+}
+.agent_info .phone {color: @mainColor;}
+.agent_info .label_list .item {border-color:@mainColor;color:@mainColor;}
+.cm_rightArea .title .b_l {background: @mainColor;}
+.cm_rightArea .rcmd_house .row .price {
+    color: @mainColor;
+}
+.cm_rightArea .rcmd_build .r_con b {
+    color: @mainColor;
+}
+.cm_rightArea .hot_build .list .con p b {
+    color: @mainColor;
+}
+.comment-head .comment-tags i.on{border-color: @mainColor;color:@mainColor;}
+.send-btn{background-color: @mainColor;color:@textColor;}
+.phone-text{color:@mainColor;}
+.header .sele_city .city_list a:hover {
+    color: @mainColor;
+}
+.label_menu h3 { color: @mainColor;}
+.label_menu .l { background: @mainColor;}
+.label_menu .link a:hover {
+    color: @mainColor;
+}
+.build_list li .ft .price {
+    color: @mainColor;
+}
+.house_news .list h4 {color: @mainColor;}
+.house_news .list h4 a{color:@mainColor;}
+.build_shoppers .l_box .appoint .form_box .btn_area .sbm {
+    background: @mainColor;
+}
+.sed_house .top_director .list .mark b {
+    color: @mainColor;
+}
+.sed_house .top_director .ft_link a {background: @mainColor;  color: @textColor;}
+.order_modl .list li .price b,
+.order_modl .list li .price_float {
+    color: @mainColor;
+}
+.slide .switchable-nav ol li.active{background-color: @mainColor;}
+.btn_area .sbm{background: @mainColor;  color: @textColor;}
+.person_center .main .menu_list a.active,
+.person_center .main .menu_list a:hover {
+    background: @mainColor;
+    color: @textColor;
+}
+.person_center .main .rightArea .title h2 a.on,
+.person_center .main .rightArea .title h2 a:hover {
+    border-color: @mainColor;
+}
+.person_center .main .base_info .form_box .check_code .get_code,
+.person_center .main .add_house .form_box .check_code .get_code {
+    background: @mainColor;
+    color: @textColor;
+}
+.J_delete{background-color: @mainColor;color:@textColor;}
+.options a.J_delete{border-color: @mainColor;color:@mainColor;background-color: @textColor;}
+.layui-btn-danger{background-color: @mainColor;}
+.layui-form-radio i:hover, .layui-form-radioed i{color:@mainColor;}
+.layui-form-select dl dd.layui-this{background-color: @mainColor;}
+.layui-form-checked[lay-skin="primary"] i{border-color:@mainColor;background-color:@mainColor;}
+.cm_rightArea .sale_btn {border-color:@mainColor;  color: @mainColor;}
+.map_house .main .r_box .house_list .bd li .r_con .price { color: @mainColor;}
+.question .question-pannel a.active{background-color: @mainColor;color:@textColor;}
+.question .question-pannel a:hover{background-color: @mainColor;color:@textColor;}
+.question-lists a.question-house-title{color:@mainColor;}
+.question-right-title span{border-bottom-color:@mainColor;}
+.question-right-lists li a:hover{color:@mainColor;}
+.question-right-lists li dd span{color:@mainColor;}
+.submit-btn{background-color: @mainColor;  color: @textColor;}
+.group_body_r01{background:@mainColor;}
+.group_body_r03{border-top-color: @mainColor;}
+.sele_city .city_list .hot a{  color:@mainColor;  }
+.sele_city .city_list a:hover {  color: @mainColor;  }
+.layui-form-checkbox[lay-skin="primary"]:hover i{border-color:@mainColor;}
+.scroll-top span.text{background-color: @mainColor;color:@textColor;}
+.news-center a:hover{color:@mainColor;}
+.index .search-type a.active{background-color: @mainColor;}
+.index .search-input .search-btn{background-color: @mainColor;color:@textColor;}
+.search-tab a.active{background-color: @mainColor;color:@textColor;}
+.search-tab a.active:after{color:@mainColor;}
+

@@ -1,0 +1,1 @@
+document.write('<ul class="poster clearfix"><li><a href="/pages/house/detail/index?id=4" title="" target="_blank"><img alt="" src="http://pic.tpfangchan.com/2018-10-30/5eede3c24a941f29a773a65ba9b22eca.jpg" width="100%"  /></a></li></ul>');

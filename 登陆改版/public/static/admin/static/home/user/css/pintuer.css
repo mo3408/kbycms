@@ -1,0 +1,196 @@
+html{margin:0;padding:0;border:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, q, dl, dt, dd, ol, ul, li, fieldset, form, legend, caption, tbody, tfoot, thead, article, aside, dialog, figure, footer, header, hgroup, nav, section{margin:0;padding:0;border:0;font-size:14px;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section{display:block;}
+i{font-style:normal;}
+body{font-size:14px;color:#333;background:#fff;font-family:"Microsoft YaHei","simsun","Helvetica Neue", Arial, Helvetica, sans-serif;}
+img{border:0;vertical-align:bottom;}
+::-webkit-input-placeholder{color:#999;}
+:-moz-placeholder{color:#999;}
+::-moz-placeholder{color:#999;}
+:-ms-input-placeholder{color:#ccc;}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
+textarea{overflow:auto;}
+input:focus,textarea:focus,button:focus,select:focus{outline:none;}
+input::-ms-clear{display:none;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline;}
+audio:not([controls]){display:none;height:0;}
+[hidden],template{display:none;}
+a{background:transparent;}
+a:active,a:hover{outline:0;}
+a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+mark{color:#000;background:#ff0;}
+small{font-size:80%;}
+sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline;}
+sup{top:-.5em;}
+sub{bottom:-.25em;}
+svg:not(:root){overflow:hidden;}
+figure{margin:1em 40px;}
+hr{height:0;-moz-box-sizing:content-box;box-sizing:content-box;}
+pre{overflow:auto;}
+code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em;}
+button,input,optgroup,select,textarea{margin:0;font:inherit;}
+button{overflow:visible;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
+input{line-height:normal;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto;}
+input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid #c0c0c0;}
+legend{padding:0;border:0;}
+optgroup{font-weight:bold;}
+table{border-spacing:0;border-collapse:collapse;}
+td,th{padding:0;}
+.button{border:solid 1px #ddd;background:transparent;border-radius:4px;font-size:14px;padding:6px 15px;margin:0;display:inline-block;line-height:20px;transition:all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
+.button[disabled]{pointer-events:none;cursor:not-allowed;webkit-box-shadow:none;box-shadow:none;filter:alpha(opacity=50);opacity:.5;}
+.button:active{background-image:none;outline:0;transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
+.button:hover{transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;}
+.button-block{display:block;width:100%;}
+.button-large{padding:15px 20px;font-size:24px;line-height:24px;}
+.button-big{padding:10px 15px;font-size:18px;line-height:22px;}
+.button-small{padding:5px 10px;font-size:12px;font-weight:normal;line-height:18px;}
+.button-little{padding:3px 5px;font-size:12px;font-weight:normal;line-height:16px;}
+.button.bg-main,.button.bg-sub,.button.bg-dot,.button.bg-black,.button.bg-gray,.button.bg-red,.button.bg-yellow,.button.bg-blue,.button.bg-green{color:#fff;}
+.layout{width:100%;}
+.container,.container-layout{margin:0 auto;padding:0 10px;}
+.leftward{display:inline-block;width:0;height:0;margin-left:2px;vertical-align:middle;border-right:4px solid;border-top:4px solid transparent;border-bottom:4px solid transparent;}
+.rightward{display:inline-block;width:0;height:0;margin-left:2px;vertical-align:middle;border-left:4px solid;border-top:4px solid transparent;border-bottom:4px solid transparent;}
+
+a.text-white:hover, .bg-inverse a:hover{color:#ddd;}
+.bg,.table .current, .table .current td,.table .current th,.button.active,.pointer.border .active,.nav-menu ul a:hover,.nav-menu.nav-pills .active ul a:hover,.bg-inverse .nav.nav-menu ul a:hover,.bg-inverse .nav.nav-menu .active ul a:hover,.bg-inverse .nav.nav-menu.nav-tabs ul a:hover,.bg-inverse .nav.nav-menu.nav-pills ul a:hover,.bg-inverse .nav-menu.nav-inline.nav-big ul a:hover,.navbar-body .nav ul a:hover
+{background-color:#f5f5f5;}
+.bg-black,.border-black .button.active,.pointer.border-black .active,.nav-pills.border-black .active a,.nav-main.border-black .nav-head,.pagination.border-black .active
+{background-color:#000;}
+.bg-gray,.border-gray .button.active,.pointer.border-gray .active,.nav-pills.border-gray .active a,.nav-main.border-gray .nav-head,.pagination.border-gray .active
+{background-color:#999;}
+.bg-white,.button.bg,.border-white .button.active,.pointer.border-white .active,.nav-pills.border-white .active a,.nav-main.border-white .nav-head,.pagination.border-white .active
+{background-color:#fff;}
+.bg-red,.border-red .button.active,.pointer.border-red .active,.nav-pills.border-red .active a,.nav-main.border-red .nav-head,.pagination.border-red .active
+{background-color:#e33;}
+.bg-yellow,.border-yellow .button.active,.pointer.border-yellow .active,.nav-pills.border-yellow .active a,.nav-main.border-yellow .nav-head,.pagination.border-yellow .active
+{background-color:#f60;}
+.bg-blue,.border-blue .button.active,.pointer.border-blue active,.nav-pills.border-blue .active a,.nav-main.border-blue .nav-head,.pagination.border-blue .active
+{background-color:#0ae;}
+.bg-green,.border-green .button.active,.pointer.border-green .active,.nav-pills.border-green .active a,.pagination.border-green .active
+{background-color:#2c7;}
+.bg-red-light,.table .red, .table .red td, .table .red th,.alert-red,.border-red-light .button.active,.pointer.border-red-light .active,.nav-pills.border-red-light .active a,.nav-main.border-red-light .nav-head,.pagination.border-red-light .active
+{background-color:#fee;}
+.bg-yellow-light,.table .yellow, .table .yellow td, .table .yellow th,.alert-yellow,.border-yellow-light .button.active,.pointer.border-yellow-light .active,.nav-pills.border-yellow-light .active a,.nav-main.border-yellow-light .nav-head,.pagination.border-yellow-light .active
+{background-color:#ffd;}
+.bg-blue-light,.table .blue, .table .blue td, .table .blue th,.alert-blue,.border-blue-light .button.active,.pointer.border-blue-light .active,.nav-pills.border-blue-light .active a,.nav-main.border-blue-light .nav-head,.pagination.border-blue-light .active
+{background-color:#eff;}
+.bg-green-light,.table .green, .table .green td, .table .green th,.alert-green,.border-green-light .button.active,.pointer.border-green-light .active,.nav-pills.border-green-light .active a,.nav-main.border-green-light .nav-head,.pagination.border-green-light .active
+{background-color:#efd;}
+.border-dashed{border-style:dashed;}
+.border-dotted{border-style:dotted;}
+.border-double{border-style:double;}
+.border-inset{border-style:inset;}
+.border-outset{border-style:outset;}
+.border-black,.border-black .button,.border-black .tab-nav li a,.border-black .tab-body,.button.bg-black,.selected.border-black,.pointer.border-black li,.nav.border-black .active a,.nav.nav-tabs.border-black,.nav-main.border-black a, .nav-main.border-black .nav-head,.pagination.border-black li,.pager.border-black a
+{border-color:#000;}
+.border-gray,.border-gray .button,.border-gray .tab-nav li a,.border-gray .tab-body,.button.bg-gray,.selected.border-gray,.pointer.border-gray li,.nav.border-gray .active a,.nav.nav-tabs.border-gray,.nav-main.border-gray a, .nav-main.border-gray .nav-head,.pagination.border-gray li,.pager.border-gray a
+{border-color:#999;}
+.border-white,.border-white .button,.border-white .tab-nav li a,.border-white .tab-body,.button.bg-white,.selected.border-white,.pointer.border-white li,.nav.border-white .active a,.nav.nav-tabs.border-white,.nav-main.border-white a, .nav-main.border-white .nav-head,.pagination.border-white li,.pager.border-white a
+{border-color:#fff;}
+.border-red,.border-red .button,.border-red .tab-nav li a,.border-red .tab-body,.button.bg-red,.selected.border-red,.pointer.border-red li,.check-error .input,.nav.border-red .active a,.nav.nav-tabs.border-red,.nav-main.border-red a, .nav-main.border-red .nav-head,.pagination.border-red li,.pager.border-red a
+{border-color:#e33;}
+.border-yellow,.border-yellow .button,.border-yellow .tab-nav li a,.border-yellow .tab-body,.button.bg-yellow,.selected.border-yellow,.pointer.border-yellow li,.check-warning .input,.nav.border-yellow .active a,.nav.nav-tabs.border-yellow,.nav-main.border-yellow a, .nav-main.border-yellow .nav-head,.pagination.border-yellow li,.pager.border-yellow a
+{border-color:#f60;}
+.border-blue,.border-blue .button,.border-blue .tab-nav li a,.border-blue .tab-body,.button.bg-blue,.selected.border-blue,.pointer.border-blue li,.nav.border-blue .active a,.nav.nav-tabs.border-blue,.nav-main.border-blue a, .nav-main.border-blue .nav-head,.pagination.border-blue li,.pager.border-blue a
+{border-color:#0ae;}
+.border-green,.border-green .button,.border-green .tab-nav li a,.border-green .tab-body,.button.bg-green,.selected.border-green,.pointer.border-green li,.check-success .input,.nav.border-green .active a,.nav.nav-tabs.border-green,.nav-main.border-green a, .nav-main.border-green .nav-head,.pagination.border-green li,.pager.border-green a
+{border-color:#2c7;}
+.border-red-light,.border-red-light .button,.border-red-light .tab-nav li a,.border-red-light .tab-body,.button.bg-red-light,.selected.border-red-light,.alert-red,.pointer.border-red-light li,.nav.border-red-light .active a,.nav.nav-tabs.border-red-light,.nav-main.border-red-light a, .nav-main.border-red-light .nav-head,.pagination.border-red-light li,.pager.border-red-light a
+{border-color:#fee;}
+.border-yellow-light,.border-yellow-light .button,.border-yellow-light .tab-nav li a,.border-yellow-light .tab-body,.button.bg-yellow-light,.selected.border-yellow-light,.alert-yellow,.pointer.border-yellow-light li,.nav.border-yellow-light .active a,.nav.nav-tabs.border-yellow-light,.nav-main.border-yellow-light a, .nav-main.border-yellow-light .nav-head,.pagination.border-yellow-light li,.pager.border-yellow-light a
+{border-color:#ffd;}
+.border-blue-light,.border-blue-light .button,.border-blue-light .tab-nav li a,.border-blue-light .tab-body,.button.bg-blue-light,.selected.border-blue-light,.alert-blue,.pointer.border-blue-light li,.nav.border-blue-light .active a,.nav.nav-tabs.border-blue-light,.nav-main.border-blue-light a, .nav-main.border-blue-light .nav-head,.pagination.border-blue-light li,.pager.border-blue-light a
+{border-color:#eff;}
+.border-green-light,.border-green-light .button,.border-green-light .tab-nav li a,.border-green-light .tab-body,.button.bg-green-light,.selected.border-green-light,.alert-green,.pointer.border-green-light li,.nav.border-green-light .active a,.nav.nav-tabs.border-green-light,.nav-main.border-green-light a, .nav-main.border-green-light .nav-head,.pagination.border-green-light li,.pager.border-green-light a
+{border-color:#efd;}
+.button:hover,.button:focus,.button.bg:hover,.button.bg:focus{background-color:#f5f5f5;}
+.button.border-black:hover,.button.border-black:focus,.button.bg-black:hover,.button.bg-black:focus{color:#fff;border-color:#666;background-color:#666;}
+.button.border-gray:hover,.button.border-gray:focus,.button.bg-gray:hover,.button.bg-gray:focus{color:#fff;border-color:#aaa;background-color:#aaa;}
+.button.border-white:hover,.button.border-white:focus,.button.bg-white:hover,.button.bg-white:focus{color:#333;border-color:#f5f5f5;background-color:#f5f5f5;}
+.button.border-red:hover,.button.border-red:focus,.button.bg-red:hover,.button.bg-red:focus{color:#fff;border-color:#f00;background-color:#f00;}
+.button.border-yellow:hover,.button.border-yellow:focus,.button.bg-yellow:hover,.button.bg-yellow:focus{color:#fff;border-color:#f90;background-color:#f90;}
+.button.border-blue:hover,.button.border-blue:focus,.button.bg-blue:hover,.button.bg-blue:focus{color:#fff;border-color:#3bd;background-color:#3bd;}
+.button.border-green:hover,.button.border-green:focus,.button.bg-green:hover,.button.bg-green:focus{color:#fff;border-color:#5d8;background-color:#5d8;}
+.button.border-red-light:hover,.button.border-red-light:focus,.button.bg-red-light:hover,.button.bg-red-light:focus,.alert-red:hover{color:#e33;border-color:#fdc;background-color:#fdc;}
+.button.border-yellow-light:hover,.button.border-yellow-light:focus,.button.bg-yellow-light:hover,.button.bg-yellow-light:focus,.alert-yellow:hover{color:#f60;border-color:#fec;background-color:#fec;}
+.button.border-blue-light:hover,.button.border-blue-light:focus,.button.bg-blue-light:hover,.button.bg-blue-light:focus,.alert-blue:hover{color:#0ae;border-color:#def;background-color:#def;}
+.button.border-green-light:hover,.button.border-green-light:focus,.button.bg-green-light:hover,.button.bg-green-light:focus,.alert-green:hover{color:#2c7;border-color:#cfa;background-color:#cfa;}
+
+
+.margin-big-left{margin-left:20px;}
+.fadein,.fadein-top,.fadein-right,.fadein-bottom,.fadein-left,.bouncein,.rotatein{-webkit-animation:1s ease-out backwards;-moz-animation:1s ease-out backwards;-ms-animation:1s ease-out backwards;animation:1s ease-out backwards;}
+.fadeout,.fadeout-top,.fadeout-right,.fadeout-bottom,.fadeout-left,.bounceout,.rotateout{-webkit-animation:1s ease-in forwards;-moz-animation:1s ease-in forwards;-ms-animation:1s ease-in forwards;animation:1s ease-in forwards;}
+.rotate,.rotate-hover{-webkit-animation:2s infinite linear;-moz-animation:2s infinite linear;-ms-animation:2s infinite linear;animation:2s infinite linear;}
+.fadein{-webkit-animation-name:a-fadein;-moz-animation-name:a-fadein;-ms-animation-name:a-fadein;animation-name:a-fadein;}
+@-webkit-keyframes a-fadein{0%{opacity:0;}100%{opacity:1;}}
+@-moz-keyframes a-fadein{0%{opacity:0;}100%{opacity:1;}}
+@-ms-keyframes a-fadein{0%{opacity:0;}100%{opacity:1;}}
+@keyframes a-fadein{0%{opacity:0;}100%{opacity:1;}}
+.fadein-top{-webkit-animation-name:fadeinT;-moz-animation-name:fadeinT;-ms-animation-name:fadeinT;animation-name:fadeinT;}
+@-webkit-keyframes fadeinT{0%{opacity:0;-webkit-transform:translateY(-50px);}100%{opacity:1;-webkit-transform:translateY(0);}}
+@-moz-keyframes fadeinT{0%{opacity:0;-moz-transform:translateY(-50px);}100%{opacity:1;-moz-transform:translateY(0);}}
+@-ms-keyframes fadeinT{0%{opacity:0;-ms-transform:translateY(-50px);}100%{opacity:1;-ms-transform:translateY(0);}}
+@keyframes fadeinT{0%{opacity:0;transform:translateY(-50px);}100%{opacity:1;transform:translateY(0);}}
+.radius-circle{border-radius:50%;}
+h1,.h1{font-size:24px;}
+/*--------自定义链接颜色(可选)--------*/
+a{color:#333;text-decoration:none;} /*链接-颜色*/
+a:focus,a:hover{color:#0ae;} /*链接-悬浮颜色*/
+/*--------自定义文本颜色--------*/
+.text-main, a.text-main:link, a.text-main:visited,.button.border-main,blockquote.border-main strong,.pager.border-main a,.pager-prev.border-main,.pager-next.border-main,.nav a:hover,.nav-menu.nav-pills .active ul a:hover,.bg-inverse .nav-menu ul a:hover,.bg-inverse .nav.nav-menu.nav-tabs ul a:hover,.bg-inverse .nav.nav-menu.nav-tabs .active ul a:hover,.bg-inverse .nav.nav-menu.nav-pills ul a:hover,.bg-inverse .nav.nav-menu.nav-pills .active ul a:hover
+{color:#0ae;} /*文本-主色*/
+.text-sub, a.text-sub:link, a.text-sub:visited,.button.border-sub,blockquote.border-sub strong,.pager.border-sub a,.pager-prev.border-sub,.pager-next.border-sub
+{color:#2c7;} /*文本-辅色*/
+.text-back, a.text-back:link, a.text-back:visited,.button.border-back,blockquote.border-back,.pager.border-back a,.pager-prev.border-back,.pager-next.border-back
+{color:#b5cfd9;} /*文本-背景色*/
+.text-mix, a.text-mix:link, a.text-mix:visited,.button.border-mix,blockquote.border-mix,.pager.border-mix a,.pager-prev.border-mix,.pager-next.border-mix
+{color:#5cd;}/*文本-融合色*/
+.text-dot, a.text-dot:link, a.text-dot:visited,.button.border-dot,blockquote.border-dot strong,.pager.border-dot a,.pager-prev.border-dot,.pager-next.border-dot
+{color:#f60;}/*文本-点缀色*/
+/*--------自定义背景色--------*/
+.bg-main,.border-main .button.active,.pointer.border-main .active,.nav-pills.border-main .active a,.nav-main.border-main .nav-head,.pagination.border-main .active
+{background-color:#fff;} /*背景-主色*/
+.bg-sub,.border-sub .button.active,.pointer.border-sub .active,.nav-pills.border-sub .active a,.nav-main.border-sub .nav-head,.pagination.border-sub .active
+{background-color:#fff;} /*背景-辅色*/
+.bg-back,.border-back .button.active,.pointer.border-back .active,.nav-pills.border-back .active a,.nav-main.border-back .nav-head,.pagination.border-back .active
+{background-color:#f2f9fd;} /*背景-背景色*/
+.bg-mix,.border-mix .button.active,.pointer.border-mix .active,.nav-pills.border-mix .active a,.pagination.border-mix .active
+{background-color:#5cd;} /*背景-融合色*/
+.bg-dot,.border-dot .button.active,.pointer.border-dot .active,.nav-pills.border-dot .active a,.nav-main.border-dot .nav-head,.pagination.border-dot .active
+{background-color:#f60;} /*背景-点缀色*/
+/*--------自定义边框色--------*/
+.border-main,.border-main .button,.border-main .tab-nav li a,.border-main .tab-body,.button.bg-main,.selected.border-main,.pointer.border-main li,.nav.border-main .active a,.nav.nav-tabs.border-main,.nav-main.border-main a, .nav-main.border-main .nav-head,.pagination.border-main li,.pager.border-main a
+{border-color:#0ae;} /*边框-主色*/
+.border-sub,.border-sub .button,.border-sub .tab-nav li a,.border-sub .tab-body,.button.bg-sub,.selected.border-sub,.pointer.border-sub li,.nav.border-sub .active a,.nav.nav-tabs.border-sub,.nav-main.border-sub a, .nav-main.border-sub .nav-head,.pagination.border-sub li,.pager.border-sub a
+{border-color:#2c7;}/*边框-辅色*/
+.border-back,.border-back .button,.border-back .tab-nav li a,.border-back .tab-body,.button.bg-back,.selected.border-back,.pointer.border-back li,.nav.border-back .active a,.nav.nav-tabs.border-back,.nav-main.border-back a, .nav-main.border-back .nav-head,.pagination.border-back li,.pager.border-back a
+{border-color:#b5cfd9;}/*边框-背景色*/
+.border-mix,.border-mix .button,.border-mix .tab-nav li a,.border-mix .tab-body,.button.bg-mix,.selected.border-mix,.pointer.border-mix li,.nav.border-mix .active a,.nav.nav-tabs.border-mix,.nav-main.border-mix a, .nav-main.border-mix .nav-head,.pagination.border-mix li,.pager.border-mix a
+{border-color:#5cd;} /*边框-融合色*/
+.border-dot,.border-dot .button,.border-dot .tab-nav li a,.border-dot .tab-body,.button.bg-dot,.selected.border-dot,.pointer.border-dot li,.nav.border-dot .active a,.nav.nav-tabs.border-dot,.nav-main.border-dot a, .nav-main.border-dot .nav-head,.pagination.border-dot li,.pager.border-dot a
+{border-color:#f60;} /*边框-点缀色*/
+/*--------自定义按钮悬浮文本、边框及背景色--------*/
+.button.border-main:hover,.button.border-main:focus,.button.bg-main:hover,.button.bg-main:focus
+{color:#fff;border-color:#0ae;background-color:#0ae;} /*主色-文本-边框-背景*/
+.button.border-sub:hover,.button.border-sub:focus,.button.bg-sub:hover,.button.bg-sub:focus
+{color:#fff;border-color:#b5cfd9;background-color:#b5cfd9;} /*配色-文本-边框-背景*/
+.button.border-back:hover,.button.border-back:focus,.button.bg-back:hover,.button.bg-back:focus
+{color:#333;border-color:#def;background-color:#def;} /*背景色-文本-边框-背景*/
+.button.border-mix:hover,.button.border-mix:focus,.button.bg-mix:hover,.button.bg-mix:focus
+{color:#333;border-color:#3bc;background-color:#3bc;} /*融合-文本色-边框-背景*/
+.button.border-dot:hover,.button.border-dot:focus,.button.bg-dot:hover,.button.bg-dot:focus
+{color:#fff;border-color:#f00;background-color:#f00;} /*点缀色-文本-边框-背景*/

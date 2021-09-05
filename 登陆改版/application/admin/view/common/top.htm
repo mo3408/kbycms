@@ -1,0 +1,168 @@
+
+    <div class="navbar">
+    <div class="navbar-inner" style="background: #000000;">
+        <div class="navbar-container">
+            <!-- Navbar Barnd -->
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                            <img src="__ADMIN__/images/logo.png" alt="">
+                        </small>
+                </a>
+            </div>
+            <!-- /Navbar Barnd -->
+            <!-- Sidebar Collapse -->
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-bars"></i>
+            </div>
+            <div class="sidebar-collapses" >
+                <a href="{:url('admin/Cate/cateList')}" class="btn btn-default">站点栏目管理</a>
+                <!-- <a href="{:url('admin_en/Cate/cateList')}" class="btn btn-default">英文站点管理</a> -->
+            </div>
+            <!-- /Sidebar Collapse -->
+            <!-- Account Area and Settings -->
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <ul class="account-area" >
+                        <li>
+                            <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                <div class="avatar" title="View your public profile">
+                                    <!--img src="__ADMIN__/images/adam-jansen.jpg"-->
+                                    <span style="font-size:30px;" class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <section>
+                                    <h2><span class="profile"><span>{$Think.session.uname}</span></span></h2>
+                                </section>
+                            </a>
+                            <!--Login Area Dropdown-->
+                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                <li class="username"><a>{$Think.session.uname}</a></li>
+                                <li class="dropdown-footer">
+                                    <a href="{:url('index/Index/index') }" target="_blank">前台首页</a>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <a href="#modal-form" data-toggle="modal">修改密码</a>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <a href="{:url('Admin/logout')}">退出登录</a>
+                                </li>
+                            </ul>
+                        </li>
+               
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-form" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 b-r">
+                        <h3 class="m-t-none m-b">修改密码</h3>
+                        <form role="form" id="update_pwd">
+                            <div class="form-group">
+                                <label>账号：</label>
+                                <input type="text" class="form-control" name="uname" require="true" id="uname" value="{$Think.session.uname}">
+                            </div>
+                            <div class="form-group">
+                                <label>原密码：</label>
+                                <input type="password" placeholder="请输入原密码" class="form-control" name="old_pwd" require="true" id="old_pwd">
+                            </div>
+                            <div class="form-group">
+                                <label>新密码：</label>
+                                <input type="password" placeholder="请输入新密码" class="form-control" name="new_pwd" require="true" id="password">
+                            </div>
+                            <div class="form-group">
+                                <label>重复密码：</label>
+                                <input type="password" placeholder="重复输入新密码" class="form-control {required:true,minlength:6,equalTo:'#password'}" name="confirm_password" require="true" id="new_pwd2">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" id="update_pwd_btn"><strong>确认提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__ADMIN__/plus/validate/jquery.validate.min.js"></script>
+<script type="text/javascript">
+        var validate = $("#update_pwd").validate({
+            debug: false, //调试模式取消submit的默认提交功能   
+            //errorClass: "label.error", //默认为错误的样式类为：error   
+            focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
+            onkeyup: false,   
+            submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form   
+                $.ajax({
+                    url:"{:url('admin/updatePwd')}",
+                    type:'post',
+                    data:{old_pwd:form.old_pwd.value,new_pwd:form.new_pwd.value,uname:uname.value},
+                    async : false,
+                    dataType:'json',
+                    success:function(data){
+
+                        if(data.status == 1){
+                            layer.tips(data.msg, '#update_pwd_btn',{
+                                tips: [4, '#78BA32'],
+                                time:600,
+                                end: function(){
+                                window.location.href="";
+                                }
+                            })
+                        }else{
+
+                           layer.tips(data.msg, '#update_pwd_btn',{tips: [4, '#78BA32']});
+                        }
+                    },
+                    error:function(){
+
+                    }
+                });
+
+                return false;  
+                form.submit();   //提交表单   
+            },   
+            
+            rules:{
+                uname:{
+                    required:true,
+                    rangelength:[4,16]
+                },
+                old_pwd:{
+                    required:true
+                },
+                new_pwd:{
+                    required:true,
+                    rangelength:[6,16]
+                },
+                confirm_password:{
+                    equalTo:"#password"
+                }                    
+            },
+            messages:{
+                uname:{
+                    required:"请输入账号",
+                    rangelength: '账号是5到15位'
+                },
+                old_pwd:{
+                    required:"请输入密码"
+                },
+                new_pwd:{
+                    required: "不能为空",
+                    rangelength: '密码是6到16位'
+                },
+                confirm_password:{
+                    equalTo:"两次密码输入不一致"
+                }                                    
+            }
+                      
+        });    
+    </script>

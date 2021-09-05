@@ -1,0 +1,191 @@
+   {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="#">广告管理</a>
+                    </li>
+                                        <li class="active">广告用户</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">添加广告</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" id="subForm">
+
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告位</label>
+                                <div class="col-sm-6">
+                                   <select name="adpos_id">
+                                       <option value="">选择广告位</option>
+                                       {volist name="adposRes" id="adpos"}
+                                       <option value="{$adpos.id}">{$adpos.name}</option>
+                                       {/volist}
+                                   </select>
+                                </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="ad_name" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">是否启用</label>
+                            <div class="col-sm-6">
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input name="on" checked="checked" value="1" type="radio" class="colored-blue">
+                                        <span class="text">是</span>
+                                    </label>
+                                </div>
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                     <label>
+                                        <input name="on" value="0" type="radio" class="colored-blue">
+                                        <span class="text">否</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告类型</label>
+                            <div class="col-sm-6">
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input id="img" checked="checked" name="type" value="1" type="radio" class="colored-blue">
+                                        <span class="text">图片</span>
+                                    </label>
+                                </div>
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                     <label>
+                                        <input id="lh" name="type" value="2" type="radio" class="colored-blue">
+                                        <span class="text">轮播</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="img">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">图片</label>
+                                <div class="col-sm-6">
+                                    <input  type="file" id="file_img" name="img_src">
+                                </div>
+                            </div>
+                            <script>initFileInput('file_img',false,1);</script>
+
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">链接地址</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"  placeholder="" name="link"  type="text">
+                                </div>
+                                <p class="help-block col-sm-4 red">* 必填(单位PX)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lh" style="display:none;">
+                           <!--  <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input  type="file" id="file-1" name="fimg_src">
+                                </div>
+                            </div>
+                            <script> 
+                            initFileInputAll('file-1',false,{$id},"{:url('ad/uploadImg')}");
+                            </script>  -->
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" id="submitButton">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+    $("#img").click(function(){
+            $(".img").show();
+            $(".lh").hide();
+        });
+    $("#lh").click(function(){
+            $(".img").hide();
+            $(".lh").show();
+        });
+$('#submitButton').click(function(){
+    var form  =document.getElementById('subForm'),
+    formdata =  new FormData(form);
+    var url = '{:url("ad/add")}';
+    $.ajax({
+                     url:url,
+                     type:'post',
+                     data:formdata,
+                     dataType:'json',
+                     processData:false,
+                     contentType:false,
+                     success:function (res) {
+                        if(res.status=="1"){
+                            layer.msg(res.msg, {icon: 1}); 
+                            window.location.href='{:url("ad/lst")}';
+                            return false;
+                        }else{
+                            layer.msg(res.msg, {icon: 2}); 
+                            return false;
+                        }
+                     },
+                     error:function () {
+                        layer.msg('添加错误！', {icon: 2}); 
+                     }
+                 })
+})
+    </script>
+
+
+</body></html>

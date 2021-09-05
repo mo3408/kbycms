@@ -1,0 +1,258 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+		   <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('Model/lst')}">模型管理</a>
+                    </li>
+                                        <li class="active">修改模型</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改模型</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post">
+                    <input type="hidden" name="id" value="{$model.id}">
+                        <div class="form-group">
+                            <label for="model_name" class="col-sm-2 control-label no-padding-right">模型名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" value="{$model.model_name}" id="model_name" placeholder="" name="model_name" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">附加表名</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="table_name" placeholder="" value="{$model.table_name}" name="table_name" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>  
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">开启状态</label>
+                            <div class="col-sm-6">
+                            <div class="radio" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input name="status" value="1" {if condition="$model['status'] eq 1"} checked="checked" {/if} class="colored-blue" type="radio">
+                                    <span class="text">启用</span>
+                                </label>
+                            </div>
+                            <div class="radio" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input name="status" value="0" {if condition="$model['status'] eq 0"} checked="checked" {/if} class="colored-blue" type="radio">
+                                    <span class="text">禁用</span>
+                                </label>
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">栏目默认设置</label>
+                            <div class="col-sm-6">
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input class="colored-blue" {in name="1" value="$cateShows" } checked="checked" {/in} value="1" name="cate_shows[]" type="checkbox">
+                                    <span class="text">seo信息</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue" {in name="2" value="$cateShows" } checked="checked" {/in}  value="2" name="cate_shows[]" type="checkbox">
+                                    <span class="text">栏目内容</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="3" value="$cateShows" } checked="checked" {/in}  value="3" name="cate_shows[]" type="checkbox">
+                                    <span class="text">附栏目名称</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="4" value="$cateShows" } checked="checked" {/in}  value="4" name="cate_shows[]" type="checkbox">
+                                    <span class="text">栏目图片</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="5" value="$cateShows" } checked="checked" {/in}  value="5" name="cate_shows[]" type="checkbox">
+                                    <span class="text">外链地址</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="6" value="$cateShows" } checked="checked" {/in}  value="6" name="cate_shows[]" type="checkbox">
+                                    <span class="text">附件上传</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="7" value="$cateShows" } checked="checked" {/in}  value="7" name="cate_shows[]" type="checkbox">
+                                    <span class="text">选择模型</span>
+                                </label>
+                                <label>
+                                    <input class="colored-blue"  {in name="8" value="$cateShows" } checked="checked" {/in}  value="8" name="cate_shows[]" type="checkbox">
+                                    <span class="text">选择模版</span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">文章默认设置</label>
+                            <div class="col-sm-6">
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input class="colored-blue" {if condition="array_key_exists(1,$adShows)"} checked="checked" {/if}   value="1" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(1,$adShows)"}
+                                    <input type="text" name="name[1]" value="{$adShows[1]}">
+                                    {else}
+                                    <input type="text" name="name[1]" value="推荐到首页">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(2,$adShows)"} checked="checked" {/if}  value="2" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(2,$adShows)"}
+                                    <input type="text" name="name[2]" value="{$adShows[2]}">
+                                    {else}
+                                    <input type="text" name="name[2]" value="发布时间">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(3,$adShows)"} checked="checked" {/if}  value="3" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(3,$adShows)"}
+                                    <input type="text" name="name[3]" value="{$adShows[3]}">
+                                    {else}
+                                    <input type="text" name="name[3]" value="关键词">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(4,$adShows)"} checked="checked" {/if}  value="4" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(4,$adShows)"}
+                                    <input type="text" name="name[4]" value="{$adShows[4]}">
+                                    {else}
+                                    <input type="text" name="name[4]" value="描述">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(5,$adShows)"} checked="checked" {/if}  value="5" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(5,$adShows)"}
+                                    <input type="text" name="name[5]" value="{$adShows[5]}">
+                                    {else}
+                                    <input type="text" name="name[5]" value="内容">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(6,$adShows)"} checked="checked" {/if}  value="6" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(6,$adShows)"}
+                                    <input type="text" name="name[6]" value="{$adShows[6]}">
+                                    {else}
+                                    <input type="text" name="name[6]" value="图片">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(7,$adShows)"} checked="checked" {/if}  value="7" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(7,$adShows)"}
+                                    <input type="text" name="name[7]" value="{$adShows[7]}">
+                                    {else}
+                                    <input type="text" name="name[7]" value="发布者">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(8,$adShows)"} checked="checked" {/if}  value="8" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(8,$adShows)"}
+                                    <input type="text" name="name[8]" value="{$adShows[8]}">
+                                    {else}
+                                    <input type="text" name="name[8]" value="链接">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(9,$adShows)"} checked="checked" {/if}  value="9" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(9,$adShows)"}
+                                    <input type="text" name="name[9]" value="{$adShows[9]}">
+                                    {else}
+                                    <input type="text" name="name[9]" value="相关推荐">
+                                    {/if}
+                                    </span>
+                                </label>
+
+                                <label>
+                                    <input class="colored-blue"  {if condition="array_key_exists(10,$adShows)"} checked="checked" {/if}  value="10" name="ad_shows[]" type="checkbox">
+                                    <span class="text">
+                                    {if condition="array_key_exists(9,$adShows)"}
+                                    <input type="text" name="name[10]" value="{$adShows[10]}">
+                                    {else}
+                                    <input type="text" name="name[10]" value="多图展示">
+                                    {/if}
+                                    </span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

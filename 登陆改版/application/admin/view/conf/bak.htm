@@ -1,0 +1,107 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+                {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Index/index')}">网站配置</a>
+                    </li>
+
+                                        <li class="active">数据库备份</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">数据库备份</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <button type="button" class="btn btn-info" onclick="handle('backup')">添加备份</button>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>序号</th>
+                          <th>备份名称</th>
+                          <th>备份时间</th>
+                          <th>备份大小</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {volist name="list" id="vo"}
+                        <tr>
+                          <th scope="row">{$key}</th>
+                          <td>{$vo.name}</td>
+                          <td>{$vo.time}</td>
+                          <td>{$vo.size}</td>
+                          <td>
+                          <a class="btn btn-xs btn-success" href="{:url('bak',['tp'=>'dowonload','name'=>$vo.name])}">下载</a>
+                          <button type="button" class="btn btn-xs btn-warning" onclick="handle('restore','{$vo.name}')">还原</button>
+                          <button type="button"  class="btn btn-xs btn-danger" onclick="handle('del','{$vo.name}')">删除</button>
+                          </td>
+                        </tr>    
+                         
+                      {/volist}
+                       
+                         
+                      </tbody>
+                    </table>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script>
+    function handle(tp,name=''){        
+        if (tp){
+            $.post("{:url('bak')}",{tp:tp,name:name},function(response){
+                if (response){
+                    jSuccess(response, {VerticalPosition: 'center',HorizontalPosition: 'center'});
+                }else{
+                    jError("操作失败，请重试!!", {VerticalPosition: 'center',HorizontalPosition: 'center'});
+                }
+     
+            });
+        }
+        setTimeout(function(){location.reload();},0);
+        
+    }
+</script>
+
+
+</body></html>

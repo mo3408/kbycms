@@ -1,0 +1,479 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{:url('Index/index')}">系统</a>
+                        </li>
+                         <li>
+                            <a href="{:url('Cate/lst')}">栏目管理</a>
+                        </li>
+                        <li class="active">添加栏目</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$cates.id}">
+            <div class="widget-body">
+                <div class="widget-main ">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home1">
+                                    基本信息
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#profile2">
+                                    栏目信息
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#profile3">
+                                    栏目内容
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tabs-flat">
+                            <div id="home1" class="tab-pane in active">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">所属模型</label>
+                                    <div class="col-sm-6">
+                                       <select name="model_id">
+                                            {volist name="modelRes" id="model"}
+                                               <option {if condition="$model['id'] eq $cates['model_id']"} selected="selected" {/if} value="{$model.id}">{$model.model_name}</option>
+                                             {/volist}
+                                       </select>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">上级栏目</label>
+                                    <div class="col-sm-6">
+                                       <select name="pid">
+                                           <option value="0">顶级栏目</option>
+                                            {volist name="cateRes" id="cate"}
+                                           <option {if condition="$cate['id'] eq $cates['pid']"} selected="selected" {/if} value="{$cate.id}"><?php echo str_repeat('-',$cate['level']*4);?>{$cate.cate_name}</option>
+                                            {/volist}
+                                       </select>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">语言版本</label>
+                                    <div class="col-sm-6">
+                                       <select name="language">
+                                       {volist name="language" id="langs"}
+                                           <option {if condition="$langs eq $cates['language']"} selected="selected" {/if} value="{$langs}">{$langs}</option>
+                                       {/volist}
+                                       </select>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="cate_name" required="" type="text" value="{$cates.cate_name}">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">附栏目名称</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="cate_ename"  type="text" value="{$cates.cate_ename}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目级别</label>
+                                    <div class="col-sm-6">
+                                       <select name="level">
+
+                                           <option value="1" {if condition="$cates.level eq 1"}selected{/if}>一级列表</option>
+                                           <option value="2" {if condition="$cates.level eq 2"}selected{/if}>二级列表</option>
+                                           <option value="3" {if condition="$cates.level eq 3"}selected{/if}>三级列表</option>
+                                           <option value="4" {if condition="$cates.level eq 4"}selected{/if}>四级列表</option>
+                                           <option value="-1" {if condition="$cates.level eq -1"}selected{/if}>无限级列表</option>
+                                           <option value="0" {if condition="$cates.level eq 0"}selected{/if}>基础信息</option>
+                                       </select>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                {if condition="$cates['pid'] eq 0"}
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目图标</label>
+                                    <div class="col-sm-6">
+                                    <!--单选-->
+                                       <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-users'"} checked="checked" {/if} name="icon" value="fa-users" type="radio">
+                                                    <span class="text"><i class="fa fa-users"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-cogs'"} checked="checked" {/if} name="icon" value="fa-cogs" type="radio">
+                                                    <span class="text"><i class="fa fa-cogs"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-th-list'"} checked="checked" {/if} name="icon" value="fa-th-list" type="radio">
+                                                    <span class="text"><i class="fa fa-th-list"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-bullhorn'"} checked="checked" {/if} name="icon" value="fa-bullhorn" type="radio">
+                                                    <span class="text"><i class="fa fa-bullhorn"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq ' fa-globe'"} checked="checked" {/if} name="icon" value="fa-globe" type="radio">
+                                                    <span class="text"><i class="fa  fa-globe"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-phone-square'"} checked="checked" {/if} name="icon" value="fa-phone-square" type="radio">
+                                                    <span class="text"><i class="fa  fa-phone-square"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-book'"} checked="checked" {/if} name="icon" value="fa-book" type="radio">
+                                                    <span class="text"><i class="fa   fa-book"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-picture-o'"} checked="checked" {/if} name="icon" value="fa-picture-o" type="radio">
+                                                    <span class="text"><i class="fa   fa-picture-o"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-truck'"} checked="checked" {/if} name="icon" value="fa-truck" type="radio">
+                                                    <span class="text"><i class="fa   fa-truck"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq ' fa-user'"} checked="checked" {/if} name="icon" value="fa-user" type="radio">
+                                                    <span class="text"><i class="fa    fa-user"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-comments-o'"} checked="checked" {/if} name="icon" value="fa-comments-o" type="radio">
+                                                    <span class="text"><i class="fa fa-comments-o"></i></span>
+                                                </label>
+                                                <label>
+                                                    <input {if condition="$cates['icon'] eq 'fa-keyboard-o'"} checked="checked" {/if} name="icon" value="fa-keyboard-o" type="radio">
+                                                    <span class="text"><i class="fa  fa-keyboard-o"></i></span>
+                                                </label>
+                                            </div>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                {/if}
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">跳转ID</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" value="{$cates.jump_id}"  placeholder="" name="jump_id"  type="text" value="{$cates.cate_ename}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">隐藏栏目</label>
+                                        <div class="col-xs-6">
+                                            <label >
+                                                <input value="" name="status" {if condition="$cates['status'] neq 1"} checked="checked" {/if} class="checkbox-slider colored-blue" type="checkbox">
+                                                <span class="text"></span>
+                                            </label>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">是否底部导航</label>
+                                        <div class="col-sm-6">
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$cates['bottom_nav'] eq 1"} checked="checked" {/if} name="bottom_nav" value="1" type="radio">
+                                                    <span class="text">是</span>
+                                                </label>
+                                            </div>
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input  {if condition="$cates['bottom_nav'] eq 0"} checked="checked" {/if}  name="bottom_nav" value="0" type="radio">
+                                                    <span class="text">否</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">是否左侧导航</label>
+                                        <div class="col-sm-6">
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$cates['programa'] eq 1"} checked="checked" {/if}    name="programa" value="1" type="radio">
+                                                    <span class="text">是</span>
+                                                </label>
+                                            </div>
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$cates['programa'] eq 0"} checked="checked" {/if} name="programa" value="0" type="radio">
+                                                    <span class="text">否</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                             
+                             <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目图片</label>
+                                    <div class="col-sm-6">
+                                        <label>
+                                            <span id="uploadify" ></span>
+                                            <input name="img" value="{$cates.img}" type="hidden">
+                                        </label>
+                                        <label>
+                                            <div id="cancel" name="img" value="" type="float:left;" class="uploadify-button btn btn-azure"><span class="uploadify-button-text"><i class="fa fa-rotate-left" style="padding-right:4px;"></i>撤销上传</span></div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="cateimgdiv" {if condition="$cates['img'] eq '' "} style="display:none;" {/if}>
+                                <label for="username" class="col-sm-2 control-label no-padding-right"></label>
+                                    <div class="col-sm-6">
+                                        <span id="cateimg" >{if condition="$cates['img'] neq '' "}<img src="__INDEX__/uploads/cateimg/{$cates.img}" height="50px"> {/if}</span>
+                                    </div>
+                                </div>
+
+                                {if condition="$cates['pid'] eq 23"}
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">附件上传</label>
+                                    <div class="col-sm-6">
+                                        <input style="float:left;"  placeholder="" name="cate_file"  type="file" value="" width="215px">
+                                        {if condition="$cates['cate_file'] neq ''"}
+                                        <span>{$cates.cate_file}</span><a style="display: inline; height:30px"  href='javascript:;' onclick='delimg(this);'>删除文件</a>
+                                        {/if}
+                                    </div>
+                                    <p class="help-block col-sm-4 red"></p>
+                                </div>
+                                {/if}
+
+
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目属性</label>
+                                    <div class="col-sm-6">
+                                        <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input name="cate_attr" value="1" {if condition="$cates['cate_attr'] eq 1"} checked="checked" {/if} type="radio">
+                                                    <span class="text">列表页栏目 </span>
+                                                </label>
+                                         </div>
+                                         <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input name="cate_attr" value="2" {if condition="$cates['cate_attr'] eq 2"} checked="checked" {/if}  type="radio">
+                                                    <span class="text">单页栏目 </span>
+                                                </label>
+                                         </div>
+                                         <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input name="cate_attr" value="3" {if condition="$cates['cate_attr'] eq 3"} checked="checked" {/if}  type="radio">
+                                                    <span class="text">外链栏目 </span>
+                                                </label>
+                                         </div>
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">列表页模版</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="list_tmp" required="" type="text" value="{$cates.list_tmp}">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">单页模版</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="index_tmp" required="" type="text" value="{$cates.index_tmp}">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">内容页模版</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="article_tmp" required="" type="text" value="{$cates.article_tmp}">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">外链地址</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="link"  type="text" value="{$cates.link}">
+                                    </div>
+                                    <p class="help-block col-sm-4 red">* 如果是外链类型请在此填写外链地址以http://开头</p>
+                                </div>
+                            </div>
+                            <div id="profile2" class="tab-pane">
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目标题</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"  placeholder="" name="title"  type="text" value="{$cates.title}">
+                                    </div>
+                                    <!--p class="help-block col-sm-4 red">* 必填</p-->
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">关键词</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control"   name="keywords"  type="text" value="{$cates.keywords}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">描述</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control"  name="desc">{$cates.desc}</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="profile3" class="tab-pane">
+                                <textarea id="content"    name="content">{$cates.content}</textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保存信息</button>
+                    </div>
+                </div>
+           </form>
+        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <!--<script src="__ADMIN__/style/jquery.js"></script>
+    Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/plus/layer/layer.js"></script>
+    <script src="__ADMIN__/plus/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/plus/ueditor/ueditor.all.js"></script>
+    <script src="__ADMIN__/plus/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    var editor_a = new baidu.editor.ui.Editor();
+    editor_a.render( 'content' ); //此处的参数值为编辑器的id值
+
+    $("#cancel").click(function(){
+        var cateid={$cates.id};
+        var img='img';
+        var imgurl=$("input[name='img']").val();
+        if(!imgurl){
+            layer.msg('请先上传图片！', {icon: 2}); 
+            return false;
+        }
+       layer.confirm('确认清除图片吗？', {icon: 3, title:'提示'}, function(index){
+            $("#cateimgdiv").hide();
+            $("input[name='img']").val('');
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                data:{imgurl:imgurl,cateid:cateid,img:img},
+                url:"{:url('Cate/delimg')}",
+                success:function(data){
+                    if(data==1){
+                        layer.msg('撤销成功！', {icon: 1}); 
+                    }else{
+                         layer.msg('撤销失败!', {icon: 2}); 
+                    }
+                }
+            });
+            layer.close(index);
+        });
+    });
+
+     <!--ajax删除附件开始-->
+                            function delimg(o){
+                                layer.confirm('你确认要删除文件吗？', {icon: 3, title:'提示'}, function(index){
+                                    var cateid={$cates.id};
+                                    var img='cate_file';
+                                    var file=$(o).prev();
+                                    var imgurl=file.html();
+                                    //alert(imgurl);
+                                    file.remove();
+                                    $(o).remove();
+                                    $.ajax({
+                                        type:"POST",
+                                        url:"{:url('Cate/delimg')}",
+                                        dataType:"json",
+                                        data:{imgurl:imgurl,cateid:cateid,img:img},
+                                        success:function(data){
+                                            if(data==1){
+                                                    //alert('撤销成功！');
+                                                        layer.msg('删除成功！', {icon: 1}); 
+                                                    }else{
+                                                        //alert('撤销失败!');
+                                                        layer.msg('删除失败!', {icon: 2}); 
+                                                    }
+                                              }
+                                    });
+                                layer.close(index);
+                                 });
+                            }
+                       
+                       <!--ajax删除附件结束-->
+
+        //修改模版
+            function changetmp(){
+                 var pcateid=$("select[name=pid]").find("option:selected").val();
+                if(pcateid != 0){
+                    $.ajax({
+                        type:"post",
+                        dataType:"json",
+                        data:{cateid:pcateid},
+                        url:"{:url('Cate/ajaxcateinfo')}",
+                        success:function(data){
+                            $("input[name=list_tmp").val(data.list_tmp);
+                            $("input[name=index_tmp").val(data.index_tmp);
+                            $("input[name=article_tmp").val(data.article_tmp);
+                            $("select[name=model_id]").val(data.model_id);
+                        }
+                    });
+                }
+            }
+
+
+            //选择上级栏目更改模版数据
+           $("select[name=pid]").change(function(){
+            changetmp();
+           });
+
+</script>
+
+
+</body></html>

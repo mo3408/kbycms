@@ -1,0 +1,425 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Cate/catelist')}">站点管理</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('content/lsts',array('cate_id'=>$cateId,'model_id'=>$modelId))}">栏目管理</a>
+                    </li>
+                                        <li class="active">会员管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">会员管理</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" action="" method="post"  >
+                        <input type="hidden" name="id" value="{$arts.id}">
+                        <input type="hidden" name="cate_id" value="{$arts.cate_id}">
+                        <!--div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">用户名</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="title" required="" type="text" value="{$arts.title}">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div-->
+                        <!--div class="form-group">
+                        <?php 
+                            $attr=$arts['attr'];
+                            $attr=explode(',', $attr);
+                        ?>
+                            <label for="username" class="col-sm-2 control-label no-padding-right">属性</label>
+                           <div class="col-sm-6">
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input class="colored-blue" <?php if(in_array('头条', $attr)){echo 'checked="checked"';}?>  value="头条" name="attr[]" type="checkbox">
+                                    <span class="text">头条</span>
+                                </label>
+                                </div>
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input class="colored-blue" <?php if(in_array('推荐', $attr)){echo 'checked="checked"';}?>  value="推荐" name="attr[]" type="checkbox">
+                                    <span class="text">推荐</span>
+                                </label>
+                                </div>
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input <?php if(in_array('幻灯', $attr)){echo 'checked="checked"';}?> class="colored-blue"  value="幻灯" name="attr[]" type="checkbox">
+                                    <span class="text">幻灯</span>
+                                </label>
+                                 </div>
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input <?php if(in_array('加粗', $attr)){echo 'checked="checked"';}?> class="colored-blue"  value="加粗" name="attr[]" type="checkbox">
+                                    <span class="text">加粗</span>
+                                </label>
+                                </div>
+                                <div class="checkbox" style="float:left; padding-left:10px;">
+                                <label>
+                                    <input class="colored-blue"  value="图片" name="attr[]" type="checkbox">
+                                    <span class="text">图片</span>
+                                </label>
+                                </div>
+                            </div>
+                        </div-->
+                        <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">所属栏目</label>
+                            {if condition="$cateId neq ''"} <input type="hidden" name="cate_id" value="{$cateId}"> {/if}
+                            <div class="col-sm-6">
+                                <select {if condition="$cateId neq ''"} disabled="disabled" {/if} name="cate_id">
+                                    <option value="0">选择栏目</option>
+                                            {volist name="cateRess" id="cate"}
+                                           <option {if condition="$cate['id'] eq $cateId"} selected="selected"  {/if}  value="{$cate.id}"><?php echo str_repeat('-',$cate['level']*4);?>{$cate.cate_name}</option>
+                                            {/volist}
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div-->  
+
+                        <!--div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">是否显示</label>
+                                        <div class="col-sm-6"-->
+                                            <!-- 单选 -->
+                                            <!--div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$arts['show'] eq 1"} checked="checked" {/if} name="show" value="1" type="radio">
+                                                    <span class="text">是</span>
+                                                </label>
+                                            </div-->
+                                            <!-- 单选 -->
+                                            <!--div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$arts['show'] eq 0"} checked="checked" {/if} name="show" value="0" type="radio">
+                                                    <span class="text">否</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div-->
+
+                        <!--div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">推荐到首页</label>
+                                        <div class="col-sm-6"-->
+                                            <!-- 单选 -->
+                                            <!--div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input {if condition="$arts['home'] eq 1"} checked="checked" {/if} name="home" value="1" type="radio">
+                                                    <span class="text">是</span>
+                                                </label>
+                                            </div-->
+                                            <!-- 单选 -->
+                                            <!--div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input  {if condition="$arts['home'] eq 0"} checked="checked" {/if}  name="home" value="0" type="radio">
+                                                    <span class="text">否</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div-->
+
+                        
+                        <!--  自定义字段开始 -->
+                       <?php foreach ($diyFields as $k => $v) :?>
+                           <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$v.field_cname}</label>
+                            <div class="col-sm-6">
+                                <?php
+                                    //1、单行 2、单选 3、复选 4、下拉 5、文本域 6、附件 7、浮点 8、整型 9、长文本longtest 
+                                    switch ($v['field_type']) {
+                                        case 1:
+                                        case 7:
+                                        case 8:
+                                            //$fileType='varchar(150) not null default ""';
+                                            if($v['field_ename']!='user_pass'){
+                                                echo "<p class='help-block col-sm-4 '>".$diyvals[$v['field_ename']]."</p>";
+                                            }else{
+                                                echo "<input class='form-control'   name='".
+                                            $v['field_ename']."'  type='text' value=''>";
+                                            }
+
+                                            break;
+                                        case 5:
+                                            echo "<textarea class='form-control'  name='".$v['field_ename']."'>".$diyvals[$v['field_ename']]."</textarea>";
+                                            break;
+                                        case 2:// 单选 
+                                            if($v['field_values']){
+                                                $arr=explode(',', $v['field_values']);
+                                                foreach ($arr as $k1 => $v1){
+                                                    if($diyvals[$v['field_ename']] == $v1){
+                                                        $check='checked="checked"';
+                                                    }else{
+                                                        $check='';
+                                                    }
+                                                     echo "<div class='radio' style='float:left; padding-left:10px;'>
+                                                                <label>
+                                                                    <input  type='radio' ".$check." name='".$v['field_ename']."' value='".$v1."'>
+                                                                    <span class='text'>".$v1."</span>
+                                                                </label>
+                                                            </div>";
+                                                }
+                                            }
+                                            break;
+                                        case 3:
+                                            if($v['field_values']){
+                                                $arr=explode(',', $v['field_values']);
+                                                $section=$diyvals[$v['field_ename']];
+                                                $section=explode(',', $section);
+                                                foreach ($arr as $k1 => $v1){
+                                                    if(in_array($v1, $section)){
+                                                        $check='checked="checked"';
+                                                    }else{
+                                                        $check='';
+                                                    }
+                                                     echo "<div class='radio' style='float:left; padding-left:10px;'>
+                                                                <label>
+                                                                    <input class='colored-blue' ".$check."  type='checkbox' name='".$v['field_ename']."[]' value='".$v1."'>
+                                                                    <span class='text'>".$v1."</span>
+                                                                </label>
+                                                            </div>";
+                                                }
+                                            }
+                                            break;
+                                        case 6:
+                                            echo "<input type='file' style='float:left;' class='file'   name='".
+                                            $v['field_ename']."'  > 
+                                            <span class='text'>".$v['field_values']."</span>";
+                                        if($diyvals[$v['field_ename']]){
+                                            echo "<img src='__INDEX__/uploads/att/".$diyvals[$v['field_ename']]."' height='30px'> <a href='javascript:;' onclick='delimg(this);'>删除文件</a>";
+                                        }
+                                            break;
+                                        case 4:
+                                            if($v['field_values']){
+                                                    $arr=explode(',', $v['field_values']);
+                                                    if($diyvals[$v['field_ename']] == $v1){
+                                                            $select=' selected="selected"';
+                                                        }else{
+                                                            $selected='';
+                                                        }
+                                                        echo "<select name='".$v['field_ename']."'>";
+                                                    foreach ($arr as $k1 => $v1){
+                                                         echo "<option ".$select." value='".$v1."'>".$v1."</option>";
+                                                    }
+                                                    echo "</select>";
+                                                }
+                                                break;
+                                        case 9:
+                                            echo get_ueditor($v['field_ename'],$diyvals[$v['field_ename']]);
+                                            break;
+                                        default:
+                                            echo "<input class='form-control'   name='".
+                                            $v['field_ename']."'  type='text' value='".$diyvals[$v['field_ename']]."'>";
+                                            break;
+                                    }
+                                ?>
+                            </div>
+                        </div>  
+                      <?php endforeach;?>
+                       <!--  自定义字段线束 -->
+                       <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">注册时间</label>
+                            <p class="help-block col-sm-4 ">{$arts.time|date="Y-m-d",###}</p>
+                            
+                        </div>
+
+
+                        <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">关键词</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="keywords" required="" type="text" value="{$arts.keywords}">
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">描述</label>
+                            <div class="col-sm-6">
+                                <textarea name="description" class="form-control">{$arts.description}</textarea>
+                            </div>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">排序</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="sort" required="" type="text" value="{$arts.sort}">
+                            </div>
+                        </div-->  
+                       <!--div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                            
+                            <div class="col-sm-6">
+                            <label>
+                                <span id="uploadify" ></span>
+                                <input name="litpic" value="{$arts.litpic}" type="hidden">
+                            </label>
+                            <label>
+                                    <div id="cancel" name="litpic" value="" type="float:left;" class="uploadify-button btn btn-azure"><span class="uploadify-button-text"><i class="fa fa-rotate-left" style="padding-right:4px;"></i>撤销上传</span></div>
+                            </label>
+                            </div>
+                        </div>
+                         <div class="form-group" id="imgdiv" {if condition="$arts['litpic'] eq '' "} style="display:none;" {/if}>
+                                <label for="username" class="col-sm-2 control-label no-padding-right"></label>
+                                    <div class="col-sm-6">
+                                        <span id="img" >{if condition="$arts['litpic'] neq '' "}<img src="__INDEX__/uploads/img/{$arts.litpic}" height="50px"> {/if}</span>
+                                    </div>
+                         </div-->
+                       
+                       <!--ajax删除文件开始-->
+                       <script type="text/javascript">
+                            function delimg(o){
+                                layer.confirm('你确认要删除文件吗？', {icon: 3, title:'提示'}, function(index){
+                                    var img=$(o).prev();
+                                    var span=img.prev();
+                                    var input=span.prev();
+                                    var field_name=input.attr("name");
+                                    //alert(field_name);
+                                    img.remove();
+                                    $(o).remove();
+                                    var aid="{$aid}";
+                                    var model_id="{$modelId}";
+                                    //alert(aid);
+                                    $.ajax({
+                                        type:"POST",
+                                        //type:"GET",
+                                        url:"{:url('Content/ajaxDelImg')}",
+                                        dataType:"json",
+                                        data:{'aid':aid,'model_id':model_id,'field_name':field_name},
+                                        success:function(data){
+                                            if(data==1){
+                                                    //alert('撤销成功！');
+                                                        layer.msg('删除成功！', {icon: 1}); 
+                                                    }else{
+                                                        //alert('撤销失败!');
+                                                        layer.msg('删除失败!', {icon: 2}); 
+                                                    }
+                                              }
+                                    });
+                                layer.close(index);
+                                 });
+                            }
+                       </script>
+                       <!--ajax删除文件结束-->
+                        <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">内容</label>
+                            <div class="col-sm-6">
+                               <textarea id="content" name="content">{$arts.content}</textarea>
+                            </div>
+                        </div-->  
+                         <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">点击量</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="click" required="" type="text" value="{$arts.click}">
+                            </div>
+                        </div-->  
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                                <div style="padding-top:10px; text-align:center;"><a href="{:url('content/lsts',array('cate_id'=>$cateId,'model_id'=>$modelId))}" class="btn btn-info shiny">返回</a></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+    <script type="text/javascript">
+    UE.getEditor('content',{toolbars:[[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+            'print', 'preview', 'searchreplace', 'drafts', 'help'
+        ]],initialFrameWidth:750,initialFrameHeight:400,});
+
+
+//文件异步上传
+ $("#cancel").click(function(){
+        var imgurl=$("input[name='litpic'").val();
+        if(!imgurl){
+            //alert('请先上传图片！');
+            layer.msg('请先上传图片！', {icon: 2}); 
+            return false;
+        }
+        // if(!confirm('确认清除图片吗？')){
+        //     return false;
+        // }
+        layer.confirm('确认清除图片吗？', {icon: 3, title:'提示'}, function(index){
+          //do something
+          $("#imgdiv").hide();
+        $("input[name='litpic'").val('');
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            data:{imgurl:imgurl},
+            url:"{:url('Content/delimg')}",
+            success:function(data){
+                if(data==1){
+                    //alert('撤销成功！');
+                    layer.msg('撤销成功！', {icon: 1}); 
+                }else{
+                    //alert('撤销失败!');
+                    layer.msg('撤销失败!', {icon: 2}); 
+                }
+            }
+        });
+          layer.close(index);
+        });
+        
+    });
+
+    </script>
+    <script>
+    //执行一个laydate实例
+    laydate.render({
+      elem: '#time' //指定元素
+      //,value: new Date({$arts['time']})
+    });
+    </script>
+
+
+</body></html>

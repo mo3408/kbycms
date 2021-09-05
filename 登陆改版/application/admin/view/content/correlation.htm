@@ -1,0 +1,107 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Cate/catelist')}">站点管理</a>
+                    </li>
+                                        <li class="active">相关产品</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                        <div id="simpledatatable_filter" class="dataTables_filter">
+                        <form enctype="multipart/form-data" class="form-horizontal" role="form" action="" method="post"  >
+                        </div>
+                        <input type="hidden" name="art_id" value="{$art_id}">
+                        <input type="hidden" name="modelId" value="{$modelId}">
+                        <input type="hidden" name="cate_id" value="{$cate_id}">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                 <th class="text-center" width="6%">选择</th>
+                                <th class="text-center" width="6%">ID</th>
+                                <th class="text-center">标题</th>
+                                <!--th class="text-center" width="20%">属性</th-->
+                                <th class="text-center" width="25%">所属栏目</th>
+                                <th class="text-center" width="15%">所属模型</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                       
+                        {volist name="cateAr" id="catars"}
+                            {volist name="$catars['son']" id="sons"}
+                             <tr>
+                                <td align="center">
+                                <label>
+                                    <input class="colored-blue"  
+                                    {if ($artRelated)}
+                                    {if (in_array($sons['id'],$artRelated))} checked="checked" {/if} {/if}
+                                    type="checkbox" name="itm[]" value="{$sons.id}" >
+                                        <span class="text"></span>
+                                </label>
+                                </td>
+                                <td align="center">{$sons.id}</td>
+                                <td >{$sons.title}</td>
+                                <td align="center">{$catars.cate_name}</td>
+                                <td align="center">{$catars.model_name}</td>
+                            </tr>
+                            {/volist}
+                        {/volist}
+                            <tr pid="0">
+                                <td colspan="6" align="right">
+                                     <button class="btn btn-default" type="submit">保存信息</button>
+                                     <div style="padding-top:10px; text-align:left;"><a href="{:url('content/lsts',array('cate_id'=>$cate_id,'model_id'=>$modelId))}" class="btn btn-info shiny">返回</a></div>
+                                </td>
+                            </tr>
+                  
+                                                    </tbody>
+                    </table>
+                    </form>
+                    
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

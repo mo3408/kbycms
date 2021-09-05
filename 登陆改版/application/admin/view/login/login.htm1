@@ -1,0 +1,132 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex,nofollow" />
+<title>kbycms网站后台管理系统</title>
+<link rel="stylesheet" href="__ADMIN__/static/login/css/login.css"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit"/><!-- 让360浏览器默认选择webkit内核 -->
+<!-- 全局js -->
+<script src="__ADMIN__/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="__ADMIN__/static/js/plugins/layer/layer.min.js"></script>
+<script src="__ADMIN__/static/js/common/ajax-object.js"></script>
+<script src="__ADMIN__/static/js/common/Feng.js"></script>
+<link type="text/css" rel="stylesheet" href="__ADMIN__/layer/mobile//need/layer.css">
+
+<link type="text/css" rel="stylesheet" href="__ADMIN__/styles/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="__ADMIN__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__ADMIN__/css/style.css">
+</head>
+<body>
+<div id="loginTopBar" class="tips_3 mt_5" style="text-align: center;">友情提示：为保证后台账号安全，建议在不使用后台时 <span class=font_red>关闭浏览器</span> 或者 点击后台的 <span class=font_red>退出</span> 按钮。</div>
+<div class="wrapper_login">
+<div class="section_left">
+<div id="loginRandomBG"></div>
+</div>
+<div class="section_right">
+<div class="bg0">
+<div class="logo_login"><h1>网站后台管理系统</h1></div>
+<dl class="loginF">
+<form>
+<dt class="t">请输入<span class="font_blue">用户名:</span></dt>
+<dd class="f"><input name="uname" id="uname" type="text" class="field_t1"></dd>
+<dt class="t">请输入<span class="font_blue">密码:</span></dt>
+<dd class="f"><input name="password" id="password" type="password" class="field_t1"></dd>
+<dt class="t">请输入<span class="font_blue">验证码:</span></dt>
+<dd class="f"><input name="code" id="code" type="text" class="field_t2"><img src="{:captcha_src()}" onClick="this.src=this.src+'?'+Math.random()" alt="点击刷新验证码" id="img" style=" margin-left:10px; cursor:pointer"></dd>
+<dt class="b"><input name="提交" id="submit" type="submit"  class="btn_login0 lbtn" value="登录">&nbsp;&nbsp;<input name="重置" type="reset" class="btn_login1" onclick="reset()" value="重置"></dt>
+</form>
+</dl>
+</div>
+</div>
+
+<script src="__ADMIN__/script/jquery-1.10.2.min.js"></script>
+<script src="__ADMIN__/plus/layer/layer.js"></script>
+<script src="__ADMIN__/plus/layui/layui.js"></script>
+<!-- <script src="__ADMIN__/script/jquery-1.10.2.min.js"></script> -->
+<script src="__ADMIN__/canvas_js/index.min.js"></script> 
+<script>
+	(function(){
+		var sn=1+Math.random()*3;
+		$('#login_bg').attr('src','loginbg'+parseInt(sn)+'.html');
+	})();   
+	</script>
+
+<script type="text/javascript">
+	$('form').submit(function(){
+	
+		var uname = $('#uname').val();
+		var password = $('#password').val();
+		var code = $('#code').val();
+	
+	
+		if(!uname){
+			layer.tips('请输入用户名', '#uname',{ tips: [2, '#CC0000'],time:1000})
+			return false;
+		}
+	
+		if(uname.length<5){
+			layer.tips('用户名错误', '#uname',{ tips: [2, '#CC0000'],time:1000})
+			return false;
+		}
+	
+		if(!password){
+			layer.tips('请输入密码', '#password',{ tips: [2, '#CC0000'],time:1000})
+			return false;
+		}
+	
+		if(!code){
+			layer.tips('请输入验证码', '#code',{ tips: [4, '#CC0000'],time:1000})
+			return false;
+		}
+	
+		if(code.length!=4){
+			layer.tips('验证码错误', '#code',{ tips: [4, '#CC0000'],time:1000})
+			return false;
+		}
+		var index = layer.load(1);
+		$.ajax({
+				url:"{:url('admin/login/login')}",
+				type:'post',
+				data:{uname:uname,password:password,code:code},
+				async : false,
+				dataType:'json',
+				success:function(data){
+					layer.close(index);
+					if(data.code == 1){
+						$('#code_img').attr('src','{:captcha_src()}');
+						$('#code').val('');
+						layer.tips('验证码错误', '#code',{ tips: [4, '#CC0000'],time:1000})
+						return false;
+					}
+	
+					if(data.code == 0){
+						
+						layer.tips(data.msg, '.lbtn',{
+							tips: [2, '#78BA32'],
+							time:4000,
+							end: function(){
+							window.location.href=data.url;
+							}
+						})
+	
+					}else{
+						$('#code_img').attr('src','{:captcha_src()}');
+						$('#code').val('');
+						layer.tips(data.msg, '.lbtn',{ tips: [2, '#CC0000'],time:1000})
+						return false;
+					}
+				},
+				error:function(){
+	
+				}
+			});
+	
+		return false;
+	})  
+	</script>
+</body>
+</html>

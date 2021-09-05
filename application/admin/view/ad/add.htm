@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>KBYCMS管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="common/head"}
+{include file="common/top"}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="#">广告管理</a>
+                    </li>
+                                        <li class="active">广告用户</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">添加广告</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+
+                         <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告位</label>
+                                <div class="col-sm-6">
+                                   <select name="adpos_id" onchange="sele()">
+                                       <option value="">选择广告位</option>
+                                       {volist name="adposRes" id="adpos"}
+                                       <option value="{$adpos.id}" hh="{$adpos.height}" ww="{$adpos.width}">{$adpos.name}</option>
+                                       {/volist}
+                                   </select>
+                                </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="ad_name" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">是否启用</label>
+                            <div class="col-sm-6">
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input name="on" checked="checked" value="1" type="radio" class="colored-blue">
+                                        <span class="text">是</span>
+                                    </label>
+                                </div>
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                     <label>
+                                        <input name="on" value="0" type="radio" class="colored-blue">
+                                        <span class="text">否</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">广告类型</label>
+                            <div class="col-sm-6">
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                    <label>
+                                        <input id="img" checked="checked" name="type" value="1" type="radio" class="colored-blue">
+                                        <span class="text">图片</span>
+                                    </label>
+                                </div>
+                                <div class="radio" style="float:left; padding-left:10px;">
+                                     <label>
+                                        <input id="lh" name="type" value="2" type="radio" class="colored-blue">
+                                        <span class="text">轮播</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+
+                        <div class="img">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">图片</label>
+                                <div class="col-sm-6">
+                                    <div class="radio" style="float:left; padding-left:10px;">
+                                        <input   placeholder="" name="img_src"  type="file">
+
+                                           <span id="imgsize">1920*450</span>
+                                    </div>
+                                </div>
+
+
+                                <p class="help-block col-sm-4 red">* 必填(单位PX)</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">链接地址</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control"  placeholder="" name="link"  type="text">
+                                </div>
+                                <p class="help-block col-sm-4 red">* 必填(单位PX)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lh" style="display:none;">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right"><a href="javascript:;" onclick="dt(this);">[+]</a><a href="javascript:;" onclick="dt(this);">[-]</a></label>
+                                <div class="col-sm-8 help-block">
+                                 <span id="imgsize1">(1920*450)</span>
+
+                                    <span>图片:</span>
+                                    <input style="display:inline;width:140px" placeholder="" name="fimg_src[]"  type="file" ;> 
+                                    <span>链接地址:</span>
+                                    <input style="display:inline; width:180px;"  placeholder="" name="flink[]"  type="text">
+                                    <span>名称:</span>
+                                    <input style="display:inline;width:100px;" placeholder="" name="title[]"  type="text">
+                                    <span>排序:</span>
+                                    <input style="display:inline;width:100px;" placeholder="" name="sort[]"  type="text">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script type="text/javascript">
+    $("#img").click(function(){
+            $(".img").show();
+            $(".lh").hide();
+        });
+    $("#lh").click(function(){
+            $(".img").hide();
+            $(".lh").show();
+        });
+
+   function sele(){
+
+ var height=($("[name=adpos_id]").find("option:selected").attr('hh'));
+
+   var width=($("[name=adpos_id]").find("option:selected").attr('ww'));
+
+
+   if(height&&width){
+
+
+   $("#imgsize").html(width+"*"+height);
+   $("#imgsize1").html(width+"*"+height);
+
+
+   }else{
+
+   $("#imgsize").html("");
+   $("#imgsize1").html("");
+
+
+
+   }
+
+
+   }
+
+
+
+//多图界面生成
+    function dt(o){
+            var div=$(o).parent().parent();
+            if($(o).html()==='[+]'){
+                var newdiv="<div class='form-group'><label for='username' class='col-sm-2 control-label no-padding-right'><a href='javascript:;' onclick='dt(this);'>[-]</a></label><div class='col-sm-8 help-block'><span>图片:</span><input style='display:inline; width:140px;' placeholder='' name='fimg_src[]'  type='file'><span>链接地址:</span><input style='display:inline; width:180px;'  placeholder='' name='flink[]'  type='text' value=''><span>标题:</span><input style='display:inline; width:100px;'  placeholder='' name='title[]'  type='text' value=''><span>排序:</span><input style='display:inline; width:100px;'  placeholder='' name='sort[]'  type='text' value='999'></div></div>";
+                //newdiv.find("a").html('[-]');
+                div.after(newdiv);
+            }else{
+                div.remove();
+            }
+        }
+
+        //多图界面生成
+    // function dt(o){
+    //         var div=$(o).parent().parent();
+    //         var id=$(o).attr("id");
+    //         if($(o).html()==='[+]'){
+    //             var newdiv="<div class='form-group'><label for='username' class='col-sm-2 control-label no-padding-right'><a href='javascript:;' onclick='dt(this);'>[-]</a></label><div class='col-sm-8 help-block'><span>图片:</span><input style='display:inline; width:140px;' placeholder='' name='fimg_src[]'  type='file'><span>链接地址:</span><input style='display:inline; width:180px;'  placeholder='' name='flink[]'  type='text' value=''><span>标题:</span><input style='display:inline; width:100px;'  placeholder='' name='title[]'  type='text' value=''><span>排序:</span><input style='display:inline; width:100px;'  placeholder='' name='stor[]'  type='text' value=''></div></div>";
+    //             div.after(newdiv);
+    //         }else{
+    //             if(id){
+    //                 ajaxdel(o,id,div);
+    //             }else{
+    //                 div.remove();
+    //             }
+    //         }
+    //     }
+    </script>
+
+
+</body></html>

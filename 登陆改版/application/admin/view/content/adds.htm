@@ -1,0 +1,455 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+<style>ul,ol{list-style:none outside none;}.clearfix:after{ content:"."; clear:both; height:0; visibility:hidden; display:block;}.clearfix{*zoom:1;}</style>
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{:url('Cate/catelist')}">站点管理{$confs.keywords}</a>
+                        </li>
+                       {foreach  name="pos" item="cate" key="k"}
+
+                             {if condition="$k eq (count($pos)-1)"}
+                                  
+                                    {if condition="$pos[$k]['level'] eq $k"}
+
+                                       <li><a href="{:url('content/lsts',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>
+
+
+                                       {else/}
+
+
+                                      <li><a href="{:url('cate/cateList',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>   
+
+                                    {/if}
+                          
+                               {else/}
+
+
+                                 <li><a href="{:url('cate/cateList',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>   
+
+                             {/if}
+                           
+                        {/foreach}
+                        <li class="active">添加文档</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+
+                    <script src="__ADMIN__/plus/ueditor/ueditor.config.js"></script>
+<script src="__ADMIN__/plus/ueditor/ueditor.all.min.js"></script>  
+<script src="__ADMIN__/plus/ueditor/lang/zh-cn/zh-cn.js"></script>   
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增文档</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" action="" method="post" id="content_form">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">标题</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="title" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <input type="hidden" name="model_id" value="{$model_id}">
+                       
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">所属栏目</label>
+                            {if condition="$cate_id neq ''"} <input type="hidden" name="cate_id" value="{$cate_id}"> {/if}
+                            <div class="col-sm-6">
+                                <select {if condition="$cate_id neq ''"} disabled="disabled" {/if} name="cate_id">
+                                    <option value="0">选择栏目</option>
+                                            {volist name="pos" id="cate"}
+                                           <option {if condition="$cate['id'] eq $cate_id"} selected="selected"  {/if}  value="{$cate.id}">{$cate.cate_name}</option>
+                                            {/volist}
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                   
+                        <div class="form-group">
+                                    <label for="username" class="col-sm-2 control-label no-padding-right">是否显示</label>
+                                        <div class="col-sm-6">
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input checked="checked" name="show" value="1" type="radio">
+                                                    <span class="text">是</span>
+                                                </label>
+                                            </div>
+                                            <!-- 单选 -->
+                                            <div class="radio" style="float:left; padding-left:10px;">
+                                                <label>
+                                                    <input  name="show" value="0" type="radio">
+                                                    <span class="text">否</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                </div>
+                        {if condition="array_key_exists(1,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['1']}</label>
+                                <div class="col-sm-6">
+                                    <!-- 单选 -->
+                                    <div class="radio" style="float:left; padding-left:10px;">
+                                        <label>
+                                            <input name="home" value="1" type="radio">
+                                            <span class="text">是</span>
+                                        </label>
+                                    </div>
+                                    <!-- 单选 -->
+                                    <div class="radio" style="float:left; padding-left:10px;">
+                                        <label>
+                                            <input checked="checked" name="home" value="0" type="radio">
+                                            <span class="text">否</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        {/if}
+                        {if condition="array_key_exists(9,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['9']}</label>
+                                <div class="col-sm-6">
+                                    <!-- 单选 -->
+                                    <div class="radio" style="float:left; padding-left:10px;">
+                                        <label>
+                                            <input name="related" value="1" type="radio">
+                                            <span class="text">是</span>
+                                        </label>
+                                    </div>
+                                    <!-- 单选 -->
+                                    <div class="radio" style="float:left; padding-left:10px;">
+                                        <label>
+                                            <input checked="checked" name="related" value="0" type="radio">
+                                            <span class="text">否</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        {/if}
+                        {if condition="array_key_exists(2,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['2']}</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="time"  placeholder="" name="time" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        {/if}
+                        {if condition="array_key_exists(7,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['7']}</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="writer" type="text" value="">
+                            </div>
+                        </div>
+                        {/if}
+                        {if condition="array_key_exists(8,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['8']}</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="link" type="text" value="">
+                            </div>
+                        </div>
+                        {/if}
+                        
+                        {if condition="$pos.0.id eq 334 or $pos.0.id eq 335"}
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">视频文件</label>
+                                <div class="col-sm-6">
+                                    <input  name="mp4_file" type="file" id="mp4">
+                                </div>
+                                <p class="help-block col-sm-4 red">* 必填</p>
+                            </div>
+                            <script>initFileInput('mp4',0,0);</script>
+                        {/if}
+
+
+                         {if condition="array_key_exists(6,$adShows)"}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">{$adShows['6']}</label>
+                            <div class="col-sm-6">
+                                <input  name="a_img" type="file" value="" id="a_img">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <script>initFileInput('a_img',false,1);</script>
+                        {/if}
+
+                        <!--  自定义字段开始 -->
+                       <?php foreach ($diyFields as $k => $v) :?>
+                           <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$v.field_cname}</label>
+                            <div class="col-sm-6">
+                                <?php
+                                    //1、单行 2、单选 3、复选 4、下拉 5、文本域 6、附件 7、浮点 8、整型 9、长文本longtest 
+                                    switch ($v['field_type']) {
+                                        case 1:
+                                        case 7:
+                                        case 8:
+                                            //$fileType='varchar(150) not null default ""';
+                                            echo "<input class='form-control'   name='".
+                                            $v['field_ename']."'  type='text'  placeholder=".$v['field_values']."  >";
+                                            break;
+                                        case 5:
+                                            echo "<textarea class='form-control'  style='height:150px;'  name='".$v['field_ename']."'  placeholder=".$v['field_values']."></textarea>";
+                                            break;
+                                        case 2:// 单选 
+                                            if($v['field_values']){
+                                                $arr=explode(',', $v['field_values']);
+                                                foreach ($arr as $k1 => $v1){
+                                                     echo "<div class='radio' style='float:left; padding-left:10px;'>
+                                                                <label>
+                                                                    <input  type='radio' name='".$v['field_ename']."' value='".$v1."'>
+                                                                    <span class='text'>".$v1."</span>
+                                                                </label>
+                                                            </div>";
+
+                                                }
+                                            }
+                                            break;
+                                        case 3:
+                                            if($v['field_values']){
+                                                $arr=explode(',', $v['field_values']);
+                                                foreach ($arr as $k1 => $v1){
+                                                     echo "<div class='radio' style='float:left; padding-left:10px;'>
+                                                                <label>
+                                                                    <input class='colored-blue'  type='checkbox' name='".$v['field_ename']."[]' value='".$v1."'>
+                                                                    <span class='text'>".$v1."</span>
+                                                                </label>
+                                                            </div>";
+                                                }
+                                            }
+                                            break;
+                                        case 6:
+                                            if($v['id']==0){
+
+                                                echo "<input type='file' style='float:left;' id='".$v['field_ename']."' class='file'   name='".$v['field_ename']."'  ><span class='text'>".$v['field_values']."</span><script>initFileInput('".$v['field_ename']."',false,false);</script>";
+
+
+
+                                            }else{ 
+
+                                                  echo "<input type='file' style='float:left;' id='".$v['field_ename']."' class='file'   name='".$v['field_ename']."'  ><span class='text'>".$v['field_values']."</span><script>initFileInput('".$v['field_ename']."',false,1);</script>";
+
+
+                                             }
+                                            
+                                            break;
+                                        case 9:
+                                            echo get_ueditor($v['field_ename']);
+                                            break;
+                                        default:
+                                            echo "<input class='form-control'   name='".
+                                            $v['field_ename']."'  type='text'>";
+                                            break;
+                                    }
+                                ?>
+                            </div>
+                        </div>  
+                      <?php endforeach;?>
+                       <!--  自定义字段线束 -->
+                       {if condition="array_key_exists(3,$adShows)"}
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$adShows['3']}</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="keywords" type="text">
+                            </div>
+                        </div>  
+                        {/if}
+                         {if condition="array_key_exists(4,$adShows)"}
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$adShows['4']}</label>
+                            <div class="col-sm-6">
+                                <textarea name="description" class="form-control" style="height: 100px;"></textarea>
+                            </div>
+                        </div>  
+                        {/if}
+                        <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">作者</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="writer" required="" type="text">
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">来源</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="source" required="" type="text">
+                            </div>
+                        </div-->  
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">排序</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="sort" required="" type="text" value="999">
+                            </div>
+                        </div>  
+                       <!--div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                            
+                            <div class="col-sm-6">
+                            <label>
+                                <span id="uploadify" ></span>
+                                <input name="litpic" value="" type="hidden">
+                            </label>
+                            <label>
+                                    <div id="cancel" name="litpic" value="" type="float:left;" class="uploadify-button btn btn-azure"><span class="uploadify-button-text"><i class="fa fa-rotate-left" style="padding-right:4px;"></i>撤销上传</span></div>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="imgdiv" style="display:none;">
+                                <label for="username" class="col-sm-2 control-label no-padding-right"></label>
+                                    <div class="col-sm-6">
+                                        <span id="img" ></span>
+                                    </div>
+                                </div-->
+                        <!--div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">点击量</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"  placeholder="" name="click" required="" type="text">
+                            </div>            
+                        </div-->  
+
+          
+                        {if condition="array_key_exists(5,$adShows)"}
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$adShows['5']}</label>
+                            <div class="col-sm-6">
+                               <textarea id="content" name="content"></textarea>
+                            </div>
+                        </div>  
+                        {/if}
+                        {if condition="array_key_exists(10,$adShows)"}
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">{$adShows['5']}</label>
+                            <div class="col-sm-6">
+                               <textarea id="all_img" name="all_img"></textarea>
+                            </div>
+                        </div>  
+                        {/if}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default btn-info shiny" style="color:#fff !important;">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+	    <!--Basic Scripts-->
+
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+   
+    <script src="__ADMIN__/script/jquery.form.min.js"></script>
+
+    <script type="text/javascript">
+        $('#content_form').on('submit', function(e) {
+            e.preventDefault(); // prevent native submit
+
+             
+             var uploadFormData = new FormData($('#content_form')[0]);
+
+
+             index = layer.load(1,{
+              icon: 1
+              ,shade: 0.1
+            });
+
+            $.ajax({
+
+                type:'post',
+
+                data:uploadFormData,
+
+                 processData: false,
+                 contentType: false,
+
+                dataTpye:'json',
+
+                url:"{:url('content/adds',['cate_id'=>$cate_id,'model_id'=>$model_id])}",
+
+
+                  success:function(data){
+
+                     layer.close(index)
+                   if(data.code==1){
+                        layer.msg(data.msg,{icon: 1,time:600,end:function(){
+                            window.location.href='{:url("content/lsts",["cate_id"=>$cate_id,"model_id"=>$model_id])}';
+                        }});
+                    }else{
+                        layer.msg(data.msg,{icon: 2,time: 1000})
+                        $.each(data.result,function (index,item) {
+                             layer.msg(item);
+                        })
+                    }
+
+                },
+                error : function() {
+                   layer.msg('服务器或网络失败，请刷新页面后重试!');
+                }
+
+
+
+
+
+            })
+            return false;
+        });
+    </script>
+    <script type="text/javascript">
+        
+        var editor_a = new baidu.editor.ui.Editor({initialFrameHeight:400,initialFrameWidth:1000});
+        editor_a.render( 'content' ); //此处的参数值为编辑器的id值
+    </script>
+     <script>
+    //执行一个laydate实例
+    laydate.render({
+      elem: '#time' //指定元素
+      ,value: new Date()
+    });
+    </script>
+
+
+{if condition="array_key_exists(10,$adShows)"}
+<script type="text/javascript">  
+  UE.getEditor('all_img', {
+      toolbars:[['source','fullscreen','insertimage']],//这里可以选择自己需要的工具按钮名称,
+  });
+</script>
+{/if}
+</body></html>

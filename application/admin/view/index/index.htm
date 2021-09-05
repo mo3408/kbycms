@@ -1,0 +1,93 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+	<!-- /头部 -->
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			 <!-- Page Sidebar -->
+            {include file="common/left"}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li class="active">控制面板</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+				<div style="text-align:center; line-height:100%; ">
+                <table class="table table-bordered table-hover">
+                    <thead class="">
+                            <tr >
+                                <th class="text-center" colspan="4">服 务 器 信 息</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                             <td class="text-center" width="18%">PHP版本：</td>
+                             <td class="text-center">{$sysinfo.version}</td>
+                             <td class="text-center" width="18%">MYSQL 版本：</td>
+                             <td class="text-center">{$sysinfo.mysql_version}</td>
+                             </tr>
+                             <tr>
+                             <td>服务器端信息：</td>
+                             <td>{$sysinfo.os}</td>
+                             <td>最大上传限制：</td>
+                             <td>{$sysinfo.max_upload}</td>
+                             </tr>
+                             <tr>
+                             <td>最大执行时间：</td>
+                             <td>{$sysinfo.max_ex_time}</td>
+                             <td>邮件支持模式：</td>
+                             <td>{$sysinfo.sys_mail}</td>
+                             </tr>
+                             <tr>
+                             <td>主机名：</td>
+                             <td>{$sysinfo.pc}</td>
+                             <td>服务器时间：</td>
+                             <td>{$sysinfo.time}</td>
+                             </tr>
+                             <tr>
+                             <td>服务器版本号：</td>
+                             <td>{$sysinfo.osname}</td>
+                             <td>服务器语言：</td>
+                             <td>{$sysinfo.language}</td>
+                             </tr>
+                              <tr>
+                             <td>服务器web端口</td>
+                             <td>{$sysinfo.port}</td>
+                             <td>cookie：</td>
+                             <td>{$sysinfo.ifcookie}</td>
+                             </tr>
+                             
+                             <tr><td colspan="4" class="text-center">欢迎使用快帮云CMS系统,遇到问题请与我们联系,  客服热线：4008-919-003,客服邮箱：service@kbyun.com</td></tr>
+                        </tbody>
+                </table>
+
+               </div>
+                </div>
+                
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

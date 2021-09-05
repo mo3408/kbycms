@@ -1,0 +1,17 @@
+body, dl, dd, ul, ol ,h1, h2, h3, h4 ,form, input, button, textarea, p, th, td{ margin:0; padding:0;}
+body{ font:12px/1.5 "\5FAE\8F6F\96C5\9ED1",arial,'Hiragino Sans GB'; color:#333; background:#fff;}
+img{vertical-align: middle; border:none;}
+ul,ol{list-style:none outside none;}
+button, input, select, textarea {font-size: 100%; vertical-align:middle;}
+a{ color:#333; text-decoration:none; blr:expression(this.onFocus=this.blur()); }
+a:hover{ text-decoration:none;}
+:focus {outline: 0 none;}
+h1,h2,h3{ font-size:100%; font-weight:normal;}
+.text,.btn,textarea{font-family:"\5FAE\8F6F\96C5\9ED1",arial,'Hiragino Sans GB';}
+.wrap{ width:1200px; margin:auto;}
+.clearfix:after{ content:"."; clear:both; height:0; visibility:hidden; display:block;}
+.clearfix{*zoom:1;}
+.btn{ cursor: pointer; font-size: 12px;}
+textarea{ resize:none;}
+.nav>li>a:focus{ background: none;}
+a:hover, a:focus{ text-decoration: none; background: none;}

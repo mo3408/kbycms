@@ -1,0 +1,232 @@
+.topBar .log_link{
+	.not_log{
+		display: none;
+	}
+	.loged{
+		display: block;
+	}
+} 
+.person_center{
+	.head{
+		width: 100%;
+		height: 90px;
+		padding: 40px 0;
+		background: url(../images/bg2.jpg) center top repeat;
+		position: relative;
+		.tx_img{
+			height: 90px;
+			width: 90px;
+			border-radius: 50%;
+			overflow: hidden;
+			text-align: center;
+			font-size: 0;
+			img{
+				width: 100%;
+				height: 100%;
+				vertical-align: top;
+			}
+		}
+		.per_info{
+			padding: 5px 20px;
+			p{
+				font-size: 20px;
+				line-height: 40px;
+				color: #333;
+			}
+		}
+	}
+	.main{
+		margin-top: 30px;
+		padding-bottom: 60px;
+		.leftArea{
+			width: 246px;
+
+		}
+		.menu_list{
+			li{
+				border-bottom: 1px solid #eee;
+			}
+			a{
+				display: block;
+				height: 56px;
+				line-height: 56px;
+				text-align: center;
+				font-size: 20px;
+				color: #333;
+				&.active,&:hover{
+					background: #d32f2f;
+					color: #fff;
+				}
+			}
+		}
+		.rightArea{
+			width: 895px;
+			.title{
+				width: 100%;
+				height: 60px;
+				position: relative;
+				h2{
+					float: left;
+					position: relative;
+					z-index: 11;
+					a{
+						display: block;
+						width: 140px;
+						font-size: 20px;
+						font-weight: normal;
+						display: block;
+						color: #333;
+						line-height: 58px;
+						border-bottom: 2px solid #eee;
+						text-align: center;
+						&.on,&:hover{
+							border-color: #d32f2f;
+						}
+					}
+				}
+				.b_l{
+					position: absolute;
+					left: 0;
+					bottom: 0px;
+					width: 100%;
+					height: 2px;
+					background: #eee;
+					z-index: 1;
+				}
+			}
+			.content{
+				margin-top: 30px;
+			}
+		}
+		/* 我的预约 */
+		.yuyue{
+			table{
+				width: 100%;
+				text-align: center;
+				border-color: #eaeaea;
+				th,td{
+					padding: 10px;
+					line-height: 26px;
+					font-size: 16px;
+					color: #333;
+				}
+			}
+		}
+		/* 编辑资料 */
+		.base_info,
+		.add_house{
+			.form_box{
+				.check_code{
+					.sct_ipt{
+						width: 140px;
+					    position: relative;
+					    .ipt {
+						    width: 118px;
+						}
+						
+					}
+					.get_code {
+					    display: block;
+					    width: 110px;
+					    text-align: center;
+					    line-height: 36px;
+					    color: #999;
+					    font-size: 13px;
+					    cursor: pointer;
+					    background: #d32f2f;
+					    color: #fff;
+					    margin-left: 10px;
+					    border-radius: 4px;
+					}
+				}
+			}
+		}
+		/*添加房源*/
+		.add_house{
+			padding-bottom: 60px;
+			.form_box{
+				.upload_sct{
+					.sct_tit{
+						line-height: 36px ;
+					}
+				}
+				.sct{
+					.sele_date,
+					.sele_address{
+						select{
+							width: 100px;
+						}
+					}
+					.unit_ipt{
+						width: auto;
+						.item{
+							width: 100px;
+							border: 1px solid #efefef;
+							position: relative;
+							font-size: 0;
+							float: left;
+							margin-right: 23px;
+							.ipt{
+								width: 40px;
+								border: 0;
+								padding: 5px;
+							}
+							.unit{
+								display: inline-block;
+								width: 40px;
+								text-align: right;
+								font-size: 14px;
+							}
+							.s_unit{
+								width: 25px;
+								padding:5px 0;
+								text-align: center;
+							}
+						}
+
+					}
+					.radio_box{
+						width: 600px;
+					}
+					.upload_con{
+						.t_con{
+							span{
+								display: block;
+								height: 36px;
+								line-height: 36px;
+								color: #333;
+							}
+							.upload_btn{
+								margin-right: 20px;
+								display: block;
+								width: 100px;
+								background: #f0f0f0;
+								border-radius: 4px;
+								text-align: center;
+								cursor: pointer;
+							}
+						}
+					}
+					.img_list{
+						width: 720px;
+						li{
+							float: left;
+							width: 160px;
+							height: 120px;
+							position: relative;
+							margin-right: 20px;
+							margin-top: 20px;
+						}
+						img{
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+			}
+		}
+		
+		
+	}
+}

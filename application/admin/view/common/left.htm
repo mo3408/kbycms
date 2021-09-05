@@ -1,0 +1,35 @@
+            <div class="page-sidebar" id="sidebar">
+                <!-- Page Sidebar Header-->
+                <div class="sidebar-header-wrapper">
+                    <!--input class="searchinput" type="text"-->
+                    <!--i class="searchicon fa fa-search"></i-->
+                    <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+                </div>
+                <!-- /Page Sidebar Header -->
+                <!-- Sidebar Menu -->
+                <ul class="nav sidebar-menu">
+
+                    {foreach name="menu" item="vo"}
+                    <li <?php $arr=explode('/',$vo['name']); $pcon=$arr[1]; if($pcon==$con){ echo 'class="active open"';} ?>  >
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa {$vo.icon}"></i>
+                            <span class="menu-text">{$vo.title}</span>
+                            <i class="menu-expand"></i>
+                        </a>
+                    
+                    <ul class="submenu">
+                        {foreach name="vo['children']" item="vo2"}
+                            <li {if condition="$name eq $vo2['name']"} class="active" {/if}>
+                                <a href="{:url($vo2.name)}">
+                                    <span class="menu-text">
+                                        {$vo2.title}                        </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        {/foreach}
+                    </ul>
+                    </li>
+                    {/foreach}
+                </ul>
+                <!-- /Sidebar Menu -->
+            </div>

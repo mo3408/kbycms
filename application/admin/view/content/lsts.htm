@@ -1,0 +1,230 @@
+    {include file="common/head"}
+<body>
+    <!-- 页面顶部 -->
+    {include file="common/top"}
+
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            {include file="common/left"}
+            <div class="page-content">
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{:url('cate/catelist')}">站点管理</a>
+                        </li>
+                       {foreach  name="pos" item="cate" key="k"}
+
+                             {if condition="$k eq (count($pos)-1)"}
+                                  
+                                    {if condition="$pos[$k]['level'] eq $k"}
+
+                                       <li><a href="{:url('content/lsts',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>
+
+
+                                       {else/}
+
+
+                                      <li><a href="{:url('cate/cateList',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>   
+
+                                    {/if}
+                          
+                               {else/}
+
+
+                                 <li><a href="{:url('cate/cateList',(['cate_id'=>$cate.id,'model_id'=>$cate.model_id]))}">{$cate.cate_name}</a></li>   
+
+                             {/if}
+                           
+                        {/foreach}
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    <button type="button" tooltip="添加文档" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('content/adds',['cate_id'=>$cate_id,'model_id'=>$model_id])}'">
+                     <i class="fa fa-plus"></i> 新建内容
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-body">
+                                    <div class="flip-scroll">
+                                            <div id="simpledatatable_filter" class="dataTables_filter">
+                                            <form  enctype="multipart/form-data" class="form-horizontal" role="form" action="" method="get" id="ajax_search_form">
+                                                <input type="hidden" name="cate_id" value="{$cate_id}">
+                                                
+                                                <div class="col-sm-3">
+                                                   <div class="input-daterange input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="input-sm form-control" name="start_time" id="startDate" autocomplete="off" value="">
+                                                        <span class="input-group-addon">到</span>
+                                                        <input type="text" class="input-sm form-control" name="end_time" id="endDate" autocomplete="off" value="">
+                                                    </div>
+                                                </div>
+                                                <!-- <label>
+                                                    <select name="sort" class="form-control">
+                                                        <option value="0">排序</option>
+                                                        <option value="click">点击数</option>
+                                                        <option value="time">发布时间</option>
+                                                    </select>
+                                                </label> -->
+                                                <label>
+                                                    <input name="key" type="search" placeholder="标题" class="form-control input-sm" aria-controls="simpledatatable" style="float:left; margin-right:10px; width:220px;">
+                                                    <button type="button" class="btn btn-blue shiny" style="width:60px; height:30px;" onclick="ajax_list()">搜索</button>
+                                                </label>
+                                                </form>
+                                            </div>
+                                            <div id="table_list">   
+                                           
+                                            </div>
+                                        <div style="padding-top:10px; width:200px; text-align:left;"><a onclick="history.go(-1)"  class="btn btn-info shiny">返回</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/plus/layer/layer.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+     <script src="__ADMIN__/script/jquery.form.min.js"></script>
+     <script type="text/javascript">
+     //设置开始时间
+    var startDate = laydate.render({
+        elem: '#startDate',
+        done: function (value, date) {
+            if (value !== '') {
+                endDate.config.min.year = date.year;
+                endDate.config.min.month = date.month - 1;
+                endDate.config.min.date = date.date;
+            } else {
+                endDate.config.min.year = '';
+                endDate.config.min.month = '';
+                endDate.config.min.date = '';
+            }
+        }
+    });
+
+    //设置结束时间
+    var endDate = laydate.render({
+        elem: '#endDate',
+        done: function (value, date) {
+            if (value !== '') {
+                startDate.config.max.year = date.year;
+                startDate.config.max.month = date.month - 1;
+                startDate.config.max.date = date.date;
+            } else {
+                startDate.config.max.year = '';
+                startDate.config.max.month = '';
+                startDate.config.max.date = '';
+            }
+        }
+    });
+</script>
+    <script type="text/javascript">
+    
+    //ajxs异步修改内容显示状态
+    function arshow(o){
+        var showid=$(o).attr("showid");
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            data:{showid:showid},
+            url:"{:url('content/arshow',['cate_id'=>$cate_id])}",
+            success:function(data){
+                if(data==1){
+                    $(o).attr("class","btn-danger btn-xs delete");
+                    $(o).find('i').attr("class","fa fa-times");
+                    $(o).css({"cursor":"pointer"});
+                }else{
+                    $(o).attr("class","btn btn-palegreen btn-xs edit");
+                    $(o).find('i').attr("class","fa fa-check");
+                    $(o).css({"cursor":"pointer"});
+                }
+            }
+        });
+    }
+    function toutiao(o){
+  
+        var showid=$(o).attr("showid");
+
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            data:{showid:showid},
+            url:"{:url('content/top',['cate_id'=>$cate_id])}",
+            success:function(data){
+
+                if(data==1){
+                    layer.msg('取消置顶成功',{time:600},function(){
+                        ajax_list();
+                    });    
+                }else{
+                    layer.msg('置顶成功',{time:600},function(){
+                    ajax_list();
+                    });  
+                }
+            }
+        });
+    }
+
+    //ajxs异步修改内容推荐状态
+    function arhome(o){
+        var homeid=$(o).attr("homeid");
+        $.ajax({
+            type:"post",
+            dataType:"json",
+            data:{homeid:homeid},
+            url:"{:url('content/arhome',['cate_id'=>$cate_id])}",
+            success:function(data){
+                if(data==1){
+                    $(o).attr("class","btn-danger btn-xs delete");
+                    $(o).find('i').attr("class","fa fa-times");
+                    $(o).css({"cursor":"pointer"});
+                }else{
+                    $(o).attr("class","btn btn-info btn-xs edit");
+                    $(o).find('i').attr("class","fa fa-check");
+                    $(o).css({"cursor":"pointer"});
+                }
+            }
+        });
+    }
+    </script>
+    <script type="text/javascript">
+        ajax_list()
+        function ajax_list(page)
+        {
+            if(!page){
+                page =1;
+            }
+            index = layer.load(1,{
+              icon: 1
+              ,shade: 0.1
+            });
+            cur_page = page; //当前页面 保存为全局变量
+            $.ajax({
+                type: "get",
+                url: "{:url('content/ajaxList')}?page=" + page,//+tab,
+                data: $('#ajax_search_form').serialize(),// 你的formid
+                success: function (data) {
+                    layer.close(index)
+                    $("#table_list").html('');
+                    $("#table_list").append(data);
+                    
+                }
+            });
+        }
+    </script>
+
+</body></html>
